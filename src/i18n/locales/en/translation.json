@@ -1,0 +1,231 @@
+{
+  "common": {
+    "appName": "Solar Sync",
+    "search": "Search",
+    "save": "Save",
+    "cancel": "Cancel",
+    "next": "Next",
+    "back": "Back",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "viewAll": "View all",
+    "status": "Status"
+  },
+  "topbar": {
+    "messages": "Messages",
+    "notifications": "Notifications"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "requests": "Solar Requests",
+    "logout": "Log out"
+  },
+  "auth": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to your Solar account",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in"
+  },
+  "dashboard": {
+    "title": "Welcome Back",
+    "subtitle": "Here's what's happening with your solar projects today.",
+    "newSolarRequest": "New Solar Request",
+    "stats": {
+      "totalQuotations": "Total Quotations",
+      "approvedQuotations": "Approved Quotations",
+      "awaitingDecision": "Awaiting Decision",
+      "installationProgress": "Installation Progress",
+      "greenMeterStatus": "Green Meter Status",
+      "paymentSummary": "Payment Summary"
+    },
+    "sections": {
+      "pendingApprovals": "Pending Approvals",
+      "activeProjects": "Active Projects",
+      "upcomingInstallations": "Upcoming Installations",
+      "recentNotifications": "Recent Notifications"
+    },
+    "actions": {
+      "viewQuotations": "View Quotations",
+      "viewAll": "View All"
+    },
+    "quotationTypes": {
+      "documentSignature": "Document Signature",
+      "quotationApproval": "Quotation Approval"
+    },
+    "dueDate": "Due {{date}}",
+    "upcoming": {
+      "systemInstallation": "System Installation",
+      "arrival": "{{company}} team arriving at {{time}} {{date}}"
+    },
+    "notifications": {
+      "quotationApproved": "Quotation Approved",
+      "paymentDue": "Payment Due"
+    },
+    "placeholders": {
+      "greenMeter": "Good",
+      "paymentSummary": "—"
+    }
+  },
+  "requests": {
+    "subtitle": "Manage and track all your solar installation requests.",
+    "address": "Address",
+    "city": "City",
+    "budget": "Budget",
+    "submitted": "Submitted",
+    "emptyTitle": "No requests yet",
+    "emptyText": "Start by filling in your property details and sending your first solar request."
+  },
+  "requestForm": {
+    "title": "New Solar Request",
+    "subtitle": "Review, compare & approve installer quotes",
+    "topTitle": "Solar Request",
+    "topSubtitle": "Request for your solar request",
+    "fromCompany": "Getting a quotation from {{name}}",
+    "preSelectedNotice": "You're requesting a quotation from:",
+    "stepOf": "Step {{current}} of {{total}}",
+    "steps": {
+      "customer": "Customer Information",
+      "customerHint": "Please provide your contact and location details.",
+      "property": "Property Information",
+      "propertyHint": "Tell us about your property and energy needs.",
+      "companies": "Company Selection",
+      "companiesHint": "Select one or more companies you would like to request a quotation from.",
+      "documents": "Document Upload",
+      "documentsHint": "Upload the documents required to process your solar request.",
+      "additional": "Additional Details",
+      "additionalHint": "Final details to help us tailor your quotation."
+    },
+    "customer": {
+      "fullName": "Full name",
+      "email": "Email address",
+      "phone": "Phone number",
+      "cnic": "CNIC number (optional)",
+      "city": "City",
+      "cityPlaceholder": "Select your city",
+      "cities": {
+        "karachi": "Karachi",
+        "lahore": "Lahore",
+        "islamabad": "Islamabad",
+        "rawalpindi": "Rawalpindi",
+        "faisalabad": "Faisalabad",
+        "multan": "Multan",
+        "peshawar": "Peshawar"
+      },
+      "address": "Full address",
+      "ownershipStatus": "Property ownership status",
+      "ownershipPlaceholder": "Select ownership status",
+      "ownershipTypes": {
+        "own": "Own",
+        "rental": "Rental"
+      }
+    },
+    "property": {
+      "propertyType": "Property type",
+      "typesPlaceholder": "Select property type",
+      "types": {
+        "residential": "Residential",
+        "commercial": "Commercial",
+        "industrial": "Industrial"
+      },
+      "requiredKva": "Required system size (KVA)",
+      "kvaPlaceholder": "Select required KVA",
+      "kva": {
+        "3": "3 KVA",
+        "5": "5 KVA",
+        "10": "10 KVA",
+        "25_plus": "25+ KVA"
+      },
+      "roofType": "Roof type",
+      "roofTypePlaceholder": "Select roof type",
+      "roofTypes": {
+        "concrete": "Concrete",
+        "metal_sheet": "Metal Sheet",
+        "ground": "Ground"
+      },
+      "roofArea": "Roof size estimate (sq ft)",
+      "roofAreaPlaceholder": "e.g. 1500",
+      "disco": "Electricity provider (DISCO)",
+      "discoPlaceholder": "Select your DISCO",
+      "discos": {
+        "kelectric": "K-Electric",
+        "lesco": "LESCO",
+        "iesco": "IESCO",
+        "fesco": "FESCO",
+        "mepco": "MEPCO",
+        "pesco": "PESCO"
+      },
+      "description": "Description",
+      "descriptionPlaceholder": "Describe your property, energy needs, or any special requirements.",
+      "survey": {
+        "label": "Site survey required?",
+        "yes": "Yes",
+        "no": "No"
+      },
+      "backupBattery": {
+        "title": "Backup Battery Requirement",
+        "question": "Do you need batteries for load shedding?",
+        "hours": "Required backup hours",
+        "hoursPlaceholder": "e.g. 4"
+      }
+    },
+    "documents": {
+      "electricityBill": "Electricity bill",
+      "electricityBillHint": "A recent utility bill showing your current consumption. JPG, PNG, WebP or PDF.",
+      "roofImages": "Roof images",
+      "roofImagesHint": "Clear photos of your rooftop from different angles. You can add more than one.",
+      "propertyFront": "Property front image",
+      "propertyFrontHint": "A photo of the front / main entrance of your property.",
+      "siteVideo": "Site video (optional)",
+      "siteVideoHint": "A short walkthrough video of your property. MP4 or MOV."
+    },
+    "additional": {
+      "preferredDate": "Preferred installation date",
+      "budgetRange": "Budget range",
+      "budgetPlaceholder": "Select a budget range",
+      "budgets": {
+        "below_500k": "Under PKR 500,000",
+        "500k_1m": "PKR 500,000 - 1,000,000",
+        "1m_2m": "PKR 1,000,000 - 2,000,000",
+        "2m_5m": "PKR 2,000,000 - 5,000,000",
+        "above_5m": "Above PKR 5,000,000"
+      },
+      "notes": "Additional notes",
+      "notesHint": "Anything else the installers should know about your property or requirements."
+    }
+  },
+  "dropzone": {
+    "clickOrDrag": "Click to upload or drag & drop",
+    "maxSize": "Maximum file size: {{max}}MB",
+    "unsupportedFile": "{{name}} is not a supported file type.",
+    "tooLarge": "{{name}} exceeds the {{max}}MB limit.",
+    "remove": "Remove file"
+  },
+  "solar": {
+    "pageTitle": "Solar Request Form",
+    "pageSubtitle": "Review, compare & approve installer quotes",
+    "getQuotations": "Get Quotations",
+    "projects": "projects",
+    "selectCompany": "Select {{name}}",
+    "favorite": "Add to favourites",
+    "projectImages": "Complete Project Images",
+    "viewMore": "View More",
+    "viewMoreImages": "View more project images",
+    "seeMore": "See more",
+    "seeLess": "See less",
+    "viewDetail": "View Detail",
+    "chat": "Chat",
+    "chatSoon": "Chat coming soon",
+    "allRegions": "All regions",
+    "anyRating": "Any rating",
+    "allCompanies": "All Companies",
+    "favorites": "Favourites",
+    "resetFilters": "Reset",
+    "noCompanies": "No companies found.",
+    "noCompaniesHint": "Try changing your search or filters."
+  },
+  "notFound": {
+    "text": "This page doesn't exist.",
+    "back": "Go to dashboard"
+  }
+}

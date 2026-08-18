@@ -1,0 +1,218 @@
+[
+  {
+    "id": "company-001",
+    "name": "SolarWorks Pvt Ltd",
+    "region": "Punjab",
+    "rating": 9.2,
+    "phone": "+92 42 111 222 333",
+    "email": "contact@solarworks.pk",
+    "description": "Experienced solar installation company providing residential and commercial solar solutions across Punjab. Trusted for rooftop and ground-mount projects with long-term warranties.",
+    "logo": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 148,
+    "isFavorite": false
+  },
+  {
+    "id": "company-002",
+    "name": "Pak Solar Solutions",
+    "region": "Punjab",
+    "rating": 8.4,
+    "phone": "+92 42 333 444 555",
+    "email": "info@paksolar.pk",
+    "description": "Full-service solar EPC company offering design, supply, and installation of grid-tied systems for homes, farms, and factories.",
+    "logo": "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 96,
+    "isFavorite": true
+  },
+  {
+    "id": "company-003",
+    "name": "EcoPower Pakistan",
+    "region": "Punjab",
+    "rating": 9.5,
+    "phone": "+92 42 666 777 888",
+    "email": "hello@ecopower.pk",
+    "description": "Award-winning solar provider delivering high-efficiency installations and smart energy monitoring. Specialists in hybrid systems with battery backup.",
+    "logo": "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 205,
+    "isFavorite": false
+  },
+  {
+    "id": "company-004",
+    "name": "Green Future Energy",
+    "region": "Sindh",
+    "rating": 8.7,
+    "phone": "+92 21 111 222 333",
+    "email": "sales@greenfuture.pk",
+    "description": "Karachi-based solar company focused on commercial rooftops and solar water pumping for agriculture in rural Sindh.",
+    "logo": "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 214,
+    "isFavorite": false
+  },
+  {
+    "id": "company-005",
+    "name": "BrightLine Solar",
+    "region": "Sindh",
+    "rating": 8.9,
+    "phone": "+92 21 444 555 666",
+    "email": "support@brightline.pk",
+    "description": "Modern solar integrator known for net-metering expertise and fast, reliable rooftop installations across Sindh.",
+    "logo": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 122,
+    "isFavorite": true
+  },
+  {
+    "id": "company-006",
+    "name": "SunTech Renewable",
+    "region": "Islamabad",
+    "rating": 9.6,
+    "phone": "+92 51 222 333 444",
+    "email": "info@suntech.pk",
+    "description": "Premium solar engineering company with a strong track record in federal and embassy-grade projects. Offers complete turnkey solutions.",
+    "logo": "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 176,
+    "isFavorite": false
+  },
+  {
+    "id": "company-007",
+    "name": "PakClean Energy",
+    "region": "Islamabad",
+    "rating": 9.0,
+    "phone": "+92 51 555 666 777",
+    "email": "hello@pakclean.pk",
+    "description": "Clean energy consultancy and installer helping residential clients transition to solar with financing options and 25-year panel guarantees.",
+    "logo": "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 134,
+    "isFavorite": true
+  },
+  {
+    "id": "company-008",
+    "name": "KPK Solar Services",
+    "region": "KPK",
+    "rating": 7.8,
+    "phone": "+92 91 222 333 444",
+    "email": "contact@kpksolar.pk",
+    "description": "Local solar contractor serving Peshawar and surrounding districts with affordable off-grid and hybrid installations.",
+    "logo": "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 63,
+    "isFavorite": false
+  },
+  {
+    "id": "company-009",
+    "name": "Hitech Solar Systems",
+    "region": "KPK",
+    "rating": 8.1,
+    "phone": "+92 91 444 555 666",
+    "email": "info@hitechsolar.pk",
+    "description": "Technology-driven solar firm offering smart inverters, remote monitoring, and maintenance plans for businesses in KPK.",
+    "logo": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 58,
+    "isFavorite": false
+  },
+  {
+    "id": "company-010",
+    "name": "Baloch Energy Solutions",
+    "region": "Balochistan",
+    "rating": 7.4,
+    "phone": "+92 81 222 333 444",
+    "email": "support@balochenergy.pk",
+    "description": "Pioneering solar electrification for remote communities and telecom towers across Balochistan.",
+    "logo": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 41,
+    "isFavorite": false
+  },
+  {
+    "id": "company-011",
+    "name": "Quetta Solar & Power",
+    "region": "Balochistan",
+    "rating": 7.2,
+    "phone": "+92 81 555 666 777",
+    "email": "info@quettasolar.pk",
+    "description": "Quetta-based installer focused on reliable battery-based systems for load-shedding-prone areas and off-grid homes.",
+    "logo": "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 33,
+    "isFavorite": false
+  },
+  {
+    "id": "company-012",
+    "name": "Solar Nexus Lahore",
+    "region": "Punjab",
+    "rating": 8.3,
+    "phone": "+92 42 999 888 777",
+    "email": "connect@solarnexus.pk",
+    "description": "Boutique solar design studio in Lahore creating aesthetic rooftop installations with premium Canadian and Chinese modules.",
+    "logo": "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=200&auto=format&fit=crop&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1592833159155-c62df1b65634?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&auto=format&fit=crop&q=80"
+    ],
+    "projects": 87,
+    "isFavorite": false
+  }
+]

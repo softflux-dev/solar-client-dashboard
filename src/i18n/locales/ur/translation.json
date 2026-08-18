@@ -1,0 +1,231 @@
+{
+  "common": {
+    "appName": "سولر سنک",
+    "search": "تلاش کریں",
+    "save": "محفوظ کریں",
+    "cancel": "منسوخ کریں",
+    "next": "اگلا",
+    "back": "پیچھے",
+    "submit": "جمع کروائیں",
+    "loading": "لوڈ ہو رہا ہے...",
+    "viewAll": "سب دیکھیں",
+    "status": "حیثیت"
+  },
+  "topbar": {
+    "messages": "پیغامات",
+    "notifications": "اطلاعات"
+  },
+  "nav": {
+    "dashboard": "ڈیش بورڈ",
+    "requests": "سولر درخواستیں",
+    "logout": "لاگ آؤٹ"
+  },
+  "auth": {
+    "title": "خوش آمدید",
+    "subtitle": "اپنے سولر اکاؤنٹ میں سائن ان کریں",
+    "email": "ای میل",
+    "password": "پاس ورڈ",
+    "signIn": "سائن ان"
+  },
+  "dashboard": {
+    "title": "دوبارہ خوش آمدید",
+    "subtitle": "آج آپ کے سولر پراجیکٹس سے متعلق تازہ صورتحال یہ ہے۔",
+    "newSolarRequest": "نئی سولر درخواست",
+    "stats": {
+      "totalQuotations": "کل کوٹیشنز",
+      "approvedQuotations": "منظور شدہ کوٹیشنز",
+      "awaitingDecision": "فیصلے کے منتظر",
+      "installationProgress": "تنصیب کی پیش رفت",
+      "greenMeterStatus": "گرین میٹر کی صورتحال",
+      "paymentSummary": "ادائیگی کا خلاصہ"
+    },
+    "sections": {
+      "pendingApprovals": "زیرِ التوا منظوری",
+      "activeProjects": "فعال پراجیکٹس",
+      "upcomingInstallations": "آنے والی تنصیبات",
+      "recentNotifications": "حالیہ اطلاعات"
+    },
+    "actions": {
+      "viewQuotations": "کوٹیشنز دیکھیں",
+      "viewAll": "سب دیکھیں"
+    },
+    "quotationTypes": {
+      "documentSignature": "دستاویز پر دستخط",
+      "quotationApproval": "کوٹیشن کی منظوری"
+    },
+    "dueDate": "آخری تاریخ {{date}}",
+    "upcoming": {
+      "systemInstallation": "سسٹم کی تنصیب",
+      "arrival": "{{company}} کی ٹیم {{date}} کو {{time}} بجے پہنچے گی"
+    },
+    "notifications": {
+      "quotationApproved": "کوٹیشن منظور ہو گیا",
+      "paymentDue": "ادائیگی واجب الادا ہے"
+    },
+    "placeholders": {
+      "greenMeter": "اچھا",
+      "paymentSummary": "—"
+    }
+  },
+  "requests": {
+    "subtitle": "اپنی تمام سولر تنصیب کی درخواستوں کا انتظام کریں۔",
+    "address": "پتہ",
+    "city": "شہر",
+    "budget": "بجٹ",
+    "submitted": "جمع کرائی گئی",
+    "emptyTitle": "ابھی کوئی درخواست نہیں",
+    "emptyText": "اپنی جائیداد کی تفصیلات درج کرکے اپنی پہلی سولر درخواست بھیجیں۔"
+  },
+  "requestForm": {
+    "title": "نئی سولر درخواست",
+    "subtitle": "انسٹالر کوٹیشنز کا جائزہ، موازنہ اور منظوری",
+    "topTitle": "سولر درخواست",
+    "topSubtitle": "اپنی سولر درخواست کے لیے درخواست دیں",
+    "fromCompany": "{{name}} سے کوٹیشن حاصل کی جا رہی ہے",
+    "preSelectedNotice": "آپ ان کمپنیوں سے کوٹیشن کی درخواست کر رہے ہیں:",
+    "stepOf": "مرحلہ {{current}} از {{total}}",
+    "steps": {
+      "customer": "گاہک کی معلومات",
+      "customerHint": "براہ کرم اپنی رابطہ اور مقام کی تفصیلات فراہم کریں۔",
+      "property": "جائیداد کی معلومات",
+      "propertyHint": "ہمیں اپنی جائیداد اور توانائی کی ضروریات کے بارے میں بتائیں۔",
+      "companies": "کمپنی کا انتخاب",
+      "companiesHint": "ایک یا زیادہ کمپنیاں منتخب کریں جن سے آپ کوٹیشن کی درخواست کرنا چاہتے ہیں۔",
+      "documents": "دستاویزات اپ لوڈ کریں",
+      "documentsHint": "اپنی سولر درخواست پر کارروائی کے لیے درکار دستاویزات اپ لوڈ کریں۔",
+      "additional": "اضافی تفصیلات",
+      "additionalHint": "آخری تفصیلات تاکہ ہم آپ کی کوٹیشن کو بہتر بنا سکیں۔"
+    },
+    "customer": {
+      "fullName": "پورا نام",
+      "email": "ای میل ایڈریس",
+      "phone": "فون نمبر",
+      "cnic": "شناختی کارڈ نمبر (اختیاری)",
+      "city": "شہر",
+      "cityPlaceholder": "اپنا شہر منتخب کریں",
+      "cities": {
+        "karachi": "کراچی",
+        "lahore": "لاہور",
+        "islamabad": "اسلام آباد",
+        "rawalpindi": "راولپنڈی",
+        "faisalabad": "فیصل آباد",
+        "multan": "ملتان",
+        "peshawar": "پشاور"
+      },
+      "address": "مکمل پتہ",
+      "ownershipStatus": "جائیداد کی ملکیت کی صورتحال",
+      "ownershipPlaceholder": "ملکیت کی صورتحال منتخب کریں",
+      "ownershipTypes": {
+        "own": "اپنی",
+        "rental": "کرایہ پر"
+      }
+    },
+    "property": {
+      "propertyType": "جائیداد کی قسم",
+      "typesPlaceholder": "جائیداد کی قسم منتخب کریں",
+      "types": {
+        "residential": "رہائشی",
+        "commercial": "تجارتی",
+        "industrial": "صنعتی"
+      },
+      "requiredKva": "مطلوبہ سسٹم سائز (کے وی اے)",
+      "kvaPlaceholder": "مطلوبہ کے وی اے منتخب کریں",
+      "kva": {
+        "3": "3 KVA",
+        "5": "5 KVA",
+        "10": "10 KVA",
+        "25_plus": "25+ KVA"
+      },
+      "roofType": "چھت کی قسم",
+      "roofTypePlaceholder": "چھت کی قسم منتخب کریں",
+      "roofTypes": {
+        "concrete": "کنکریٹ",
+        "metal_sheet": "میٹل شیٹ",
+        "ground": "زمینی"
+      },
+      "roofArea": "چھت کے سائز کا تخمینہ (اسکوائر فٹ)",
+      "roofAreaPlaceholder": "مثلاً 1500",
+      "disco": "بجلی فراہم کنندہ (ڈسکو)",
+      "discoPlaceholder": "اپنا ڈسکو منتخب کریں",
+      "discos": {
+        "kelectric": "K-Electric",
+        "lesco": "LESCO",
+        "iesco": "IESCO",
+        "fesco": "FESCO",
+        "mepco": "MEPCO",
+        "pesco": "PESCO"
+      },
+      "description": "تفصیل",
+      "descriptionPlaceholder": "اپنی جائیداد، توانائی کی ضروریات، یا کسی خاص شرط کے بارے میں بتائیں۔",
+      "survey": {
+        "label": "کیا سائٹ سروے درکار ہے؟",
+        "yes": "ہاں",
+        "no": "نہیں"
+      },
+      "backupBattery": {
+        "title": "بیک اپ بیٹری کی ضرورت",
+        "question": "کیا آپ کو لوڈ شیڈنگ کے لیے بیٹریاں چاہئیں؟",
+        "hours": "مطلوبہ بیک اپ گھنٹے",
+        "hoursPlaceholder": "مثلاً 4"
+      }
+    },
+    "documents": {
+      "electricityBill": "بجلی کا بل",
+      "electricityBillHint": "آپ کا حالیہ بجلی بل جس میں موجودہ استعمال درج ہو۔ JPG، PNG، WebP یا PDF۔",
+      "roofImages": "چھت کی تصاویر",
+      "roofImagesHint": "اپنی چھت کی مختلف زاویوں سے صاف تصاویر۔ آپ ایک سے زیادہ شامل کر سکتے ہیں۔",
+      "propertyFront": "جائیداد کے سامنے کی تصویر",
+      "propertyFrontHint": "اپنی جائیداد کے سامنے / مرکزی دروازے کی تصویر۔",
+      "siteVideo": "جائیداد کی ویڈیو (اختیاری)",
+      "siteVideoHint": "اپنی جائیداد کی مختصر ویڈیو۔ MP4 یا MOV۔"
+    },
+    "additional": {
+      "preferredDate": "تنصیب کی ترجیحی تاریخ",
+      "budgetRange": "بجٹ کی حد",
+      "budgetPlaceholder": "بجٹ کی حد منتخب کریں",
+      "budgets": {
+        "below_500k": "پانچ لاکھ سے کم",
+        "500k_1m": "پانچ سے دس لاکھ",
+        "1m_2m": "دس سے بیس لاکھ",
+        "2m_5m": "بیس سے پچاس لاکھ",
+        "above_5m": "پچاس لاکھ سے زیادہ"
+      },
+      "notes": "اضافی نوٹس",
+      "notesHint": "کوئی اور بات جو انسٹالرز کو آپ کی جائیداد یا ضروریات کے بارے میں معلوم ہونی چاہیے۔"
+    }
+  },
+  "dropzone": {
+    "clickOrDrag": "اپ لوڈ کرنے کے لیے کلک کریں یا ڈریگ اینڈ ڈراپ کریں",
+    "maxSize": "زیادہ سے زیادہ فائل کا حجم: {{max}}MB",
+    "unsupportedFile": "{{name}} فائل کی قسم معاون نہیں ہے۔",
+    "tooLarge": "{{name}} {{max}}MB کی حد سے تجاوز کر گئی ہے۔",
+    "remove": "فائل ہٹائیں"
+  },
+  "solar": {
+    "pageTitle": "سولر ریکوسٹ فارم",
+    "pageSubtitle": "انسٹالر کوٹیشنز کا جائزہ، موازنہ اور منظوری",
+    "getQuotations": "کوٹیشن حاصل کریں",
+    "projects": "منصوبے",
+    "selectCompany": "{{name}} کو منتخب کریں",
+    "favorite": "پسندیدہ میں شامل کریں",
+    "projectImages": "مکمل پروجیکٹ تصاویر",
+    "viewMore": "مزید دیکھیں",
+    "viewMoreImages": "مزید پروجیکٹ تصاویر دیکھیں",
+    "seeMore": "مزید دیکھیں",
+    "seeLess": "کم دیکھیں",
+    "viewDetail": "تفصیل دیکھیں",
+    "chat": "چیٹ",
+    "chatSoon": "چیٹ جلد دستیاب ہوگی",
+    "allRegions": "تمام علاقے",
+    "anyRating": "کوئی بھی ریٹنگ",
+    "allCompanies": "تمام کمپنیاں",
+    "favorites": "پسندیدہ",
+    "resetFilters": "ری سیٹ",
+    "noCompanies": "کوئی کمپنی نہیں ملی۔",
+    "noCompaniesHint": "اپنی تلاش یا فلٹرز تبدیل کر کے دیکھیں۔"
+  },
+  "notFound": {
+    "text": "یہ صفحہ موجود نہیں ہے۔",
+    "back": "ڈیش بورڈ پر جائیں"
+  }
+}
