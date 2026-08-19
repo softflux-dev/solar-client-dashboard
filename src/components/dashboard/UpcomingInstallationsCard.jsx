@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Wrench } from "lucide-react";
 
+import upcomingInstallationIcon from "@/assets/icons/upcomingInstallationIcon.svg";
 import ListItemRow from "@/components/common/ListItemRow";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatLongDate, formatTime } from "@/lib/date";
@@ -15,11 +15,13 @@ export default function UpcomingInstallationsCard() {
       <CardHeader>
         <CardTitle className="text-base">{t("dashboard.sections.upcomingInstallations")}</CardTitle>
       </CardHeader>
-      <CardContent className="divide-y">
+      <CardContent className="space-y-2">
         {installations.map((item) => (
           <ListItemRow
             key={item.id}
-            icon={Wrench}
+            icon={upcomingInstallationIcon}
+            iconVariant="gradient"
+            className="rounded-lg bg-muted/60 px-2"
             title={t(item.titleKey)}
             subtitle={t("dashboard.upcoming.arrival", {
               company: item.companyName,

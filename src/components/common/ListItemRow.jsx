@@ -1,9 +1,22 @@
+import { cn } from "@/lib/utils";
 import IconTile from "@/components/common/IconTile";
 
-export default function ListItemRow({ icon, title, subtitle, action, iconVariant = "tint" }) {
+export default function ListItemRow({
+  icon,
+  title,
+  subtitle,
+  action,
+  iconVariant = "tint",
+  iconClassName,
+  className,
+}) {
   return (
-    <div className="flex items-center gap-3 py-3">
-      <IconTile icon={icon} variant={iconVariant} className="h-10 w-10 rounded-lg" />
+    <div className={cn("flex items-center gap-3 py-3", className)}>
+      <IconTile
+        icon={icon}
+        variant={iconVariant}
+        className={cn("h-10 w-10 rounded-lg", iconClassName)}
+      />
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-medium">{title}</p>
         {subtitle && <p className="mt-0.5 truncate text-xs text-muted-foreground">{subtitle}</p>}

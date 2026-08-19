@@ -1,15 +1,13 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import {
-  Award,
-  CheckCircle2,
-  Clock,
-  Gauge,
-  Wallet,
-  Wrench,
-} from "lucide-react";
 
 import StatCard from "@/components/common/StatCard";
+import approvedQuotationsIcon from "@/assets/icons/dashboardIcons/approvedQuotations.svg";
+import awaitingDecisionIcon from "@/assets/icons/dashboardIcons/Vector-1.svg";
+import greenMeterStatusIcon from "@/assets/icons/dashboardIcons/Black-1.svg";
+import installationProgressIcon from "@/assets/icons/dashboardIcons/Black.svg";
+import totalQuotationsIcon from "@/assets/icons/dashboardIcons/Vector.svg";
+import paymentSummaryIcon from "@/assets/icons/dashboardIcons/Vector-2.svg";
 import {
   selectQuotationStats,
   selectInstallationProgressCount,
@@ -22,36 +20,37 @@ export default function DashboardStatsGrid() {
   const installationProgress = useSelector(selectInstallationProgressCount);
 
   const stats = [
-    { label: t("dashboard.stats.totalQuotations"), value: total, icon: Award },
+    {
+      label: t("dashboard.stats.totalQuotations"),
+      value: total,
+      icon: totalQuotationsIcon,
+    },
     {
       label: t("dashboard.stats.approvedQuotations"),
       value: approved,
-      icon: CheckCircle2,
-      highlighted: false,
+      icon: approvedQuotationsIcon,
     },
     {
       label: t("dashboard.stats.awaitingDecision"),
       value: awaitingDecision,
-      icon: Clock,
+      icon: awaitingDecisionIcon,
     },
     {
       label: t("dashboard.stats.installationProgress"),
       value: installationProgress,
-      icon: Wrench,
+      icon: installationProgressIcon,
     },
     // Green Meter Status and Payment Summary have no backing feature yet;
     // these static placeholders should become real selectors later.
     {
       label: t("dashboard.stats.greenMeterStatus"),
-      // value: t("dashboard.placeholders.greenMeter"),
       value: 2,
-      icon: Gauge,
+      icon: greenMeterStatusIcon,
     },
     {
       label: t("dashboard.stats.paymentSummary"),
-      // value: t("dashboard.placeholders.paymentSummary"),
       value: 3,
-      icon: Wallet,
+      icon: paymentSummaryIcon,
     },
   ];
 

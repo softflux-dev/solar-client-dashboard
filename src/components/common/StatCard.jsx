@@ -1,4 +1,3 @@
-import IconTile from "@/components/common/IconTile";
 import { cn } from "@/lib/utils";
 
 export default function StatCard({ label, value, icon, highlighted = false, className }) {
@@ -7,11 +6,18 @@ export default function StatCard({ label, value, icon, highlighted = false, clas
       className={cn("stat-card", className)}
       data-active={highlighted ? "true" : undefined}
     >
-      <div className="min-w-0">
+      <div className="flex items-center gap-4">
+        <span className="icon-tile icon-tile--grey">
+          <img
+            src={icon}
+            alt=""
+            aria-hidden="true"
+            className="h-5 w-5 object-contain"
+          />
+        </span>
         <p className="stat-card__label">{label}</p>
-        <p className="stat-card__value">{value}</p>
       </div>
-      <IconTile icon={icon} variant={highlighted ? "gradient" : "tint"} />
+      <p className="stat-card__value">{value}</p>
     </div>
   );
 }

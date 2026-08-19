@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Mail, MapPin, Phone, Star } from "lucide-react";
+import { ChevronDown, Mail, Phone, Star } from "lucide-react";
 
 import CompanyLogo from "@/components/solar/CompanyLogo";
 import CompanyRowActions from "@/components/solar/CompanyRowActions";
@@ -23,6 +24,7 @@ export default function CompanyRow({
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [descExpanded, setDescExpanded] = useState(false);
 
   const expanded = useSelector(
     (state) => state.solarRequests.expandedCompanyId === company.id,
@@ -51,12 +53,23 @@ export default function CompanyRow({
       )}
       onClick={selectable ? () => onToggleSelect?.(company.id) : undefined}
     >
-      <div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center">
-        {/* Identity */}
-        <div className="flex flex-1 items-center gap-3">
-          <CompanyLogo company={company} className="w-24 h-24" />
-          <div className="min-w-0">
-            <h3 className="truncate text-xl font-bold leading-tight">
+      <div className={cn("flex flex-col p-4 sm:flex-row sm:items-start", expanded ? "gap-2 pb-1" : "gap-4")}>
+        {/* Identity — logo grows when expanded */}
+        <div className={cn("flex flex-1 items-start gap-4", expanded && "gap-5")}>
+          <CompanyLogo
+            company={company}
+            className={cn(
+              "shrink-0 transition-all duration-300",
+              expanded ? "h-32 w-32" : "h-24 w-24",
+            )}
+          />
+          <div className="min-w-0 flex-1">
+            <h3
+              className={cn(
+                "truncate font-bold leading-tight",
+                expanded ? "text-2xl" : "text-xl",
+              )}
+            >
               {company.name}
             </h3>
             <p className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-sm text-muted-foreground">
@@ -73,14 +86,15 @@ export default function CompanyRow({
                 {company.rating.toFixed(1)}
               </span>
             </p>
-            {/* Contact info */}
-            <div className="hidden flex-col gap-1 md:flex pt-2">
+
+            {/* Contact info — always shown */}
+            <div className="flex flex-col gap-1 pt-2">
               <p
                 className="flex items-center gap-2 text-sm text-muted-foreground"
                 dir="ltr"
               >
                 <Phone className="h-3.5 w-3.5 shrink-0" />
-                <span className="truncate">{company.phone}</span>
+                <span>{company.phone}</span>
               </p>
               <p
                 className="flex items-center gap-2 text-sm text-muted-foreground"
@@ -89,22 +103,68 @@ export default function CompanyRow({
                 <Mail className="h-3.5 w-3.5 shrink-0" />
                 <a
                   href={`mailto:${company.email}`}
-                  className="truncate text-primary hover:underline"
+                  className="text-primary hover:underline"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {company.email}
                 </a>
               </p>
             </div>
+
+            {/* Description — merged inline when expanded */}
+            {expanded && (
+              <div className="mt-3">
+                <p className="text-sm font-bold text-foreground">
+                  {t("solar.description", "Description")}
+                </p>
+                <p
+                  className={cn(
+                    "mt-0.5 text-sm leading-relaxed text-muted-foreground",
+                    !descExpanded && "crd-desc-clamped",
+                  )}
+                >
+                  {company.description}
+                </p>
+                {company.description && company.description.length > 200 && (
+                  <button
+                    type="button"
+                    className="crd-read-more"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setDescExpanded((v) => !v);
+                    }}
+                  >
+                    {descExpanded
+                      ? t("solar.readLess", "Read less...")
+                      : t("solar.readMore", "Read more...")}
+                  </button>
+                )}
+              </div>
+            )}
+
+            {/* See more toggle — only when collapsed */}
+            {!selectable && !expanded && (
+              <button
+                type="button"
+                onClick={handleExpand}
+                aria-expanded={expanded}
+                className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+              >
+                {t("solar.seeMore")}
+                <ChevronDown className="h-4 w-4 transition-transform duration-200" />
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Actions */}
+        {/* Actions — when expanded, only the favourite heart is shown here;
+            View Detail / Get Quotations / Chat live in the expanded panel */}
         <CompanyRowActions
           company={company}
           selectable={selectable}
           selected={selected}
           isFavorite={isFavorite}
+          expanded={expanded}
           onToggleSelect={onToggleSelect}
           onToggleFavorite={(id) => dispatch(toggleFavorite(id))}
           onExpand={handleExpand}
@@ -112,9 +172,16 @@ export default function CompanyRow({
         />
       </div>
 
-      {/* Expandable detail section */}
+      {/* Expandable section — image tiles + action bar + See Less */}
       {!selectable && expanded && (
-        <CompanyRowDetails company={company} onSeeLess={handleExpand} />
+        <div className="px-4 pt-0 pb-2">
+          <CompanyRowDetails
+            company={company}
+            onCollapse={handleExpand}
+            onExpand={handleExpand}
+            onGetQuotations={handleGetQuotations}
+          />
+        </div>
       )}
     </Card>
   );

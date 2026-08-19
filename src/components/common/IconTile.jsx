@@ -1,15 +1,27 @@
 import { cn } from "@/lib/utils";
 
-export default function IconTile({ icon: Icon, variant = "tint", className }) {
+const variantClass = {
+  tint: "icon-tile--tint",
+  gradient: "icon-tile--gradient",
+  primary: "icon-tile--primary",
+};
+
+export default function IconTile({ icon, variant = "tint", className }) {
+  const Icon = typeof icon === "string" ? null : icon;
+
   return (
     <div
       className={cn(
         "icon-tile",
-        variant === "gradient" ? "icon-tile--gradient" : "icon-tile--tint",
+        variantClass[variant] ?? variantClass.tint,
         className
       )}
     >
-      <Icon className="h-5 w-5" />
+      {Icon ? (
+        <Icon className="h-5 w-5" />
+      ) : (
+        <img src={icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
+      )}
     </div>
   );
 }

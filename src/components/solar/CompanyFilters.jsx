@@ -47,13 +47,14 @@ export default function CompanyFilters({ className }) {
             value={searchQuery}
             onChange={(e) => dispatch(setSearchQuery(e.target.value))}
             placeholder={t("common.search")}
-            className="ps-9"
+            className="rounded-lg bg-white ps-9"
           />
         </div>
 
         {/* Region filter */}
+         
         <Select value={selectedRegion} onValueChange={(v) => dispatch(setRegion(v))}>
-          <SelectTrigger className="lg:w-44">
+          <SelectTrigger className="rounded-lg bg-white lg:w-44">
             <SelectValue placeholder={t("solar.allRegions")} />
           </SelectTrigger>
           <SelectContent>
@@ -67,8 +68,9 @@ export default function CompanyFilters({ className }) {
         </Select>
 
         {/* Rating filter */}
+      
         <Select value={selectedRating} onValueChange={(v) => dispatch(setRating(v))}>
-          <SelectTrigger className="lg:w-36">
+          <SelectTrigger className="rounded-lg bg-white lg:w-36">
             <SelectValue placeholder={t("solar.anyRating")} />
           </SelectTrigger>
           <SelectContent>
@@ -80,10 +82,12 @@ export default function CompanyFilters({ className }) {
             ))}
           </SelectContent>
         </Select>
+        
 
         {/* Company filter */}
+      
         <Select value={companyFilter} onValueChange={(v) => dispatch(setCompanyFilter(v))}>
-          <SelectTrigger className="lg:w-44">
+          <SelectTrigger className="rounded-lg bg-white lg:w-44">
             <SelectValue placeholder={t("solar.allCompanies")} />
           </SelectTrigger>
           <SelectContent>
@@ -91,6 +95,7 @@ export default function CompanyFilters({ className }) {
             <SelectItem value="favorites">{t("solar.favorites")}</SelectItem>
           </SelectContent>
         </Select>
+      
 
         {/* Reset */}
         <Button

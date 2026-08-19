@@ -13,12 +13,14 @@ export default function ActiveProjectsCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-base">{t("dashboard.sections.activeProjects")}</CardTitle>
+        <CardTitle className="text-base">
+          {t("dashboard.sections.activeProjects")}
+        </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div className="space-y-2">
           {projects.map((project) => (
-            <div key={project.id}>
+            <div key={project.id} className="rounded-lg bg-muted/60 px-2 py-3">
               <p className="text-sm font-medium">{project.name}</p>
               <p className="mt-0.5 text-xs text-muted-foreground">
                 {project.code} · {project.company}
@@ -27,7 +29,11 @@ export default function ActiveProjectsCard() {
             </div>
           ))}
         </div>
-        <Button variant="outline" className="mt-5 w-full">
+        <Button
+          variant="outline"
+          size="lg"
+          className="w-full mt-2 hover:bg-brand-gradient hover:text-white"
+        >
           {t("dashboard.actions.viewAll")}
         </Button>
       </CardContent>

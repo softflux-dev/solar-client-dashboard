@@ -190,8 +190,16 @@
     background-image: linear-gradient(81.35deg, #ffd600 -6.41%, #e46713 64.87%);
   }
 
+  .icon-tile--grey {
+    @apply bg-muted;
+  }
+
+  .icon-tile--primary {
+    @apply bg-primary text-primary-foreground;
+  }
+
   .stat-card {
-    @apply relative flex items-center justify-between gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-200;
+    @apply relative flex flex-col gap-3 rounded-2xl border border-border bg-card p-5 shadow-sm transition-all duration-200;
   }
 
   /* Hover (every non-highlighted card) and the permanently highlighted
@@ -204,7 +212,7 @@
   }
 
   .stat-card__label {
-    @apply text-sm text-foreground;
+    @apply text-sm font-medium;
   }
 
   .stat-card__value {
@@ -222,9 +230,128 @@
   }
 
   /* Flip the tinted icon tile to the gradient variant via CSS only. */
-  .stat-card:hover .icon-tile,
-  .stat-card[data-active="true"] .icon-tile {
+  .stat-card:hover .icon-tile--tint,
+  .stat-card[data-active="true"] .icon-tile--tint {
     color: #fff;
     background-image: linear-gradient(81.35deg, #ffd600 -6.41%, #e46713 64.87%);
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* COMPANY ROW DETAILS (expanded panel)  crd-*                        */
+  /* ------------------------------------------------------------------ */
+
+  /* Wrapper for the entire expanded panel */
+  .crd-panel {
+    @apply flex flex-col gap-0;
+  }
+
+  /* Thin divider between the card header and the expanded content */
+  .crd-divider {
+    @apply my-0 border-border;
+  }
+
+  /* Description block */
+  .crd-desc-wrap {
+    @apply px-0 pt-4 pb-2;
+  }
+
+  .crd-desc-heading {
+    @apply mb-1 text-sm font-bold text-foreground;
+  }
+
+  .crd-desc-text {
+    @apply text-sm leading-relaxed text-muted-foreground;
+  }
+
+  /* Line-clamp to ~4 lines when collapsed */
+  .crd-desc-clamped {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* "Read more..." / "Read less..." toggle */
+  .crd-read-more {
+    @apply mt-0.5 inline-block text-sm font-medium text-primary hover:underline focus:outline-none;
+    color: hsl(var(--primary));
+  }
+
+  /* Images section */
+  .crd-images-section {
+    @apply pt-1 pb-2;
+  }
+
+  .crd-images-label {
+    @apply mb-2 text-sm font-semibold text-foreground;
+  }
+
+  /* Horizontal row of image tiles */
+  .crd-images-grid {
+    @apply flex flex-wrap gap-2;
+  }
+
+  /* Individual image tile */
+  .crd-img-wrapper {
+    @apply relative h-20 w-20 overflow-hidden rounded-lg border border-border bg-muted flex-shrink-0;
+  }
+
+  .crd-img {
+    @apply h-full w-full object-cover;
+  }
+
+  /* "View More.." overlay tile */
+  .crd-viewmore-tile {
+    @apply cursor-pointer;
+  }
+
+  .crd-viewmore-overlay {
+    @apply absolute inset-0 flex items-center justify-center rounded-lg;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .crd-viewmore-text {
+    @apply text-xs font-semibold text-white text-center leading-snug px-1;
+  }
+
+  /* Bottom action bar */
+  .crd-bottom-bar {
+    @apply flex items-center justify-end pt-2 pb-1;
+  }
+
+  /* Action buttons row */
+  .crd-actions {
+    @apply flex items-center gap-2;
+  }
+
+  /* "View Detail" outline button */
+  .crd-btn-outline {
+    @apply border border-border bg-card text-foreground hover:bg-muted;
+  }
+
+  /* "Get Quotations" — brand gradient */
+  .crd-btn-primary {
+    color: #fff;
+    background-image: linear-gradient(81.35deg, #ffd600 -6.41%, #e46713 64.87%);
+    border: none;
+  }
+  .crd-btn-primary:hover {
+    background-image: linear-gradient(81.35deg, #f0b400 -6.41%, #d95312 64.87%);
+    box-shadow: 0 4px 12px rgba(228, 103, 19, 0.35);
+  }
+
+  /* Chat icon ghost button */
+  .crd-btn-chat {
+    @apply text-muted-foreground hover:text-foreground;
+  }
+
+  /* "See Less" footer — centred below everything */
+  .crd-footer {
+    @apply flex items-center justify-center pt-1 pb-2;
+  }
+
+  .crd-see-less {
+    @apply inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline focus:outline-none;
+    color: hsl(var(--primary));
   }
 }
