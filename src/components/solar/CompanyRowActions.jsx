@@ -104,7 +104,7 @@ export default function CompanyRowActions({
             size="icon"
             title={t("solar.chatSoon")}
             aria-label={t("solar.chat")}
-            className="text-muted-foreground hover:bg-brand-gradient hover:text-white"
+            className="bg-muted text-muted-foreground hover:bg-brand-gradient hover:text-white"
           >
             <ChatIcon className="h-4 w-4" />
           </Button>

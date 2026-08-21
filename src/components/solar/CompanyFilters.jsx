@@ -27,9 +27,15 @@ export default function CompanyFilters({ className }) {
   const dispatch = useDispatch();
 
   const searchQuery = useSelector((state) => state.solarRequests.searchQuery);
-  const selectedRegion = useSelector((state) => state.solarRequests.selectedRegion);
-  const selectedRating = useSelector((state) => state.solarRequests.selectedRating);
-  const companyFilter = useSelector((state) => state.solarRequests.companyFilter);
+  const selectedRegion = useSelector(
+    (state) => state.solarRequests.selectedRegion,
+  );
+  const selectedRating = useSelector(
+    (state) => state.solarRequests.selectedRating,
+  );
+  const companyFilter = useSelector(
+    (state) => state.solarRequests.companyFilter,
+  );
 
   const hasActiveFilters =
     searchQuery.trim() !== "" ||
@@ -38,8 +44,8 @@ export default function CompanyFilters({ className }) {
     companyFilter !== "all";
 
   return (
-    <div className={cn("space-y-3", className)}>
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+    <div className={cn("space-y-3 ", className)}>
+      <div className="flex flex-col gap-3 lg:flex-row  lg:items-center w-full">
         {/* Search */}
         <div className="relative flex-1">
           <Search className="absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -52,9 +58,12 @@ export default function CompanyFilters({ className }) {
         </div>
 
         {/* Region filter */}
-         
-        <Select value={selectedRegion} onValueChange={(v) => dispatch(setRegion(v))}>
-          <SelectTrigger className="rounded-lg bg-white lg:w-44">
+
+        <Select
+          value={selectedRegion}
+          onValueChange={(v) => dispatch(setRegion(v))}
+        >
+          <SelectTrigger className="rounded-lg bg-white lg:w-40">
             <SelectValue placeholder={t("solar.allRegions")} />
           </SelectTrigger>
           <SelectContent>
@@ -68,9 +77,12 @@ export default function CompanyFilters({ className }) {
         </Select>
 
         {/* Rating filter */}
-      
-        <Select value={selectedRating} onValueChange={(v) => dispatch(setRating(v))}>
-          <SelectTrigger className="rounded-lg bg-white lg:w-36">
+
+        <Select
+          value={selectedRating}
+          onValueChange={(v) => dispatch(setRating(v))}
+        >
+          <SelectTrigger className="rounded-lg bg-white lg:w-40">
             <SelectValue placeholder={t("solar.anyRating")} />
           </SelectTrigger>
           <SelectContent>
@@ -82,12 +94,14 @@ export default function CompanyFilters({ className }) {
             ))}
           </SelectContent>
         </Select>
-        
 
         {/* Company filter */}
-      
-        <Select value={companyFilter} onValueChange={(v) => dispatch(setCompanyFilter(v))}>
-          <SelectTrigger className="rounded-lg bg-white lg:w-44">
+
+        <Select
+          value={companyFilter}
+          onValueChange={(v) => dispatch(setCompanyFilter(v))}
+        >
+          <SelectTrigger className="rounded-lg bg-white lg:w-40">
             <SelectValue placeholder={t("solar.allCompanies")} />
           </SelectTrigger>
           <SelectContent>
@@ -95,13 +109,15 @@ export default function CompanyFilters({ className }) {
             <SelectItem value="favorites">{t("solar.favorites")}</SelectItem>
           </SelectContent>
         </Select>
-      
 
         {/* Reset */}
         <Button
           variant="ghost"
           size="sm"
-          className={cn("text-muted-foreground", !hasActiveFilters && "pointer-events-none opacity-0")}
+          className={cn(
+            "text-muted-foreground",
+            !hasActiveFilters && "pointer-events-none opacity-0",
+          )}
           onClick={() => dispatch(clearFilters())}
         >
           <RotateCcw className="h-4 w-4" />

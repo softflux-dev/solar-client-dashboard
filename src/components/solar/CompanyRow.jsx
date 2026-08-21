@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +23,7 @@ export default function CompanyRow({
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [descExpanded, setDescExpanded] = useState(false);
+
 
   const expanded = useSelector(
     (state) => state.solarRequests.expandedCompanyId === company.id,
@@ -53,14 +52,24 @@ export default function CompanyRow({
       )}
       onClick={selectable ? () => onToggleSelect?.(company.id) : undefined}
     >
-      <div className={cn("flex flex-col p-4 sm:flex-row sm:items-start", expanded ? "gap-2 pb-1" : "gap-4")}>
+      <div
+        className={cn(
+          "flex flex-col p-4 sm:flex-row sm:items-start lg:items-center",
+          expanded ? "gap-2 pb-1 lg:items-start" : "gap-4",
+        )}
+      >
         {/* Identity — logo grows when expanded */}
-        <div className={cn("flex flex-1 items-start gap-4", expanded && "gap-5")}>
+        <div
+          className={cn(
+            "flex flex-1 items-start gap-4 lg:items-center",
+            expanded && "gap-5 lg:items-start",
+          )}
+        >
           <CompanyLogo
             company={company}
             className={cn(
               "shrink-0 transition-all duration-300",
-              expanded ? "h-32 w-32" : "h-24 w-24",
+              expanded ? "h-44 w-44" : "h-32 w-32 lg:h-36 lg:w-36",
             )}
           />
           <div className="min-w-0 flex-1">
@@ -72,7 +81,7 @@ export default function CompanyRow({
             >
               {company.name}
             </h3>
-            <p className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-sm text-muted-foreground">
+            <p className="mt-0.35 flex flex-wrap items-center gap-x-1.5 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1">
                 {company.region}
               </span>
@@ -88,7 +97,7 @@ export default function CompanyRow({
             </p>
 
             {/* Contact info — always shown */}
-            <div className="flex flex-col gap-1 pt-2">
+            <div className="flex flex-col ">
               <p
                 className="flex items-center gap-2 text-sm text-muted-foreground"
                 dir="ltr"
@@ -103,7 +112,7 @@ export default function CompanyRow({
                 <Mail className="h-3.5 w-3.5 shrink-0" />
                 <a
                   href={`mailto:${company.email}`}
-                  className="text-primary hover:underline"
+                  className="hover:text-primary hover:underline"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {company.email}
@@ -111,36 +120,18 @@ export default function CompanyRow({
               </p>
             </div>
 
-            {/* Description — merged inline when expanded */}
+            {/* Description — only shown when expanded, full wrapped text */}
             {expanded && (
-              <div className="mt-3">
+              <div className="mt-2">
                 <p className="text-sm font-bold text-foreground">
                   {t("solar.description", "Description")}
                 </p>
-                <p
-                  className={cn(
-                    "mt-0.5 text-sm leading-relaxed text-muted-foreground",
-                    !descExpanded && "crd-desc-clamped",
-                  )}
-                >
+                <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground">
                   {company.description}
                 </p>
-                {company.description && company.description.length > 200 && (
-                  <button
-                    type="button"
-                    className="crd-read-more"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setDescExpanded((v) => !v);
-                    }}
-                  >
-                    {descExpanded
-                      ? t("solar.readLess", "Read less...")
-                      : t("solar.readMore", "Read more...")}
-                  </button>
-                )}
               </div>
             )}
+          
 
             {/* See more toggle — only when collapsed */}
             {!selectable && !expanded && (
@@ -148,7 +139,7 @@ export default function CompanyRow({
                 type="button"
                 onClick={handleExpand}
                 aria-expanded={expanded}
-                className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                className="mt-1.5 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
               >
                 {t("solar.seeMore")}
                 <ChevronDown className="h-4 w-4 transition-transform duration-200" />
