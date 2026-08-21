@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Bell } from "lucide-react";
+import notificationIcon from "@/assets/icons/topbar/notificationIcon.svg";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,7 +21,7 @@ export default function NotificationMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="relative">
-          <Bell className="h-4 w-4" />
+          <img src={notificationIcon} className="h-4 w-4" />
           {notifications.length > 0 && (
             <span className="absolute end-2 top-2 h-2 w-2 rounded-full bg-brand-gradient ring-2 ring-background" />
           )}

@@ -18,6 +18,7 @@
   "nav": {
     "dashboard": "ڈیش بورڈ",
     "requests": "سولر درخواستیں",
+    "settings": "ترتیبات",
     "logout": "لاگ آؤٹ"
   },
   "auth": {

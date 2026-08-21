@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { MessageCircle } from "lucide-react";
+import chatIcon from "@/assets/icons/topbar/chatIcon.svg";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -23,7 +23,7 @@ export default function ChatMenu() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="relative">
-          <MessageCircle className="h-4 w-4" />
+          <img src={chatIcon} className="h-4 w-4" />
           <span className="absolute end-2 top-2 h-2 w-2 rounded-full bg-brand-gradient ring-2 ring-background" />
         </Button>
       </DropdownMenuTrigger>

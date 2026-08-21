@@ -263,10 +263,11 @@
     @apply text-sm leading-relaxed text-muted-foreground;
   }
 
-  /* Line-clamp to ~4 lines when collapsed */
+  /* Line-clamp for the collapsed description (a few lines) */
   .crd-desc-clamped {
+    line-clamp: 3;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -279,11 +280,11 @@
 
   /* Images section */
   .crd-images-section {
-    @apply pt-1 pb-2;
+    @apply pt-0 pb-1;
   }
 
   .crd-images-label {
-    @apply mb-2 text-sm font-semibold text-foreground;
+    @apply mb-1 text-sm font-semibold text-foreground;
   }
 
   /* Horizontal row of image tiles */
@@ -316,7 +317,7 @@
 
   /* Bottom action bar */
   .crd-bottom-bar {
-    @apply flex items-center justify-end pt-2 pb-1;
+    @apply flex items-center justify-end pt-1.5 pb-0;
   }
 
   /* Action buttons row */
@@ -347,7 +348,7 @@
 
   /* "See Less" footer — centred below everything */
   .crd-footer {
-    @apply flex items-center justify-center pt-1 pb-2;
+    @apply flex items-center justify-center pt-0.5 pb-1;
   }
 
   .crd-see-less {
