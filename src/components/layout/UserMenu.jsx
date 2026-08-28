@@ -24,11 +24,13 @@ export default function UserMenu() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const initials = user?.name
+  const displayName = user?.fullName ?? user?.email ?? "User";
+  const initials = displayName
     ?.split(" ")
     .map((n) => n[0])
     .join("")
-    .slice(0, 2);
+    .slice(0, 2)
+    .toUpperCase();
 
   const menuItemClass =
     "group flex w-full cursor-pointer items-center gap-2.5 rounded-md px-2.5 py-2 text-sm text-muted-foreground outline-none transition-colors hover:bg-brand-gradient hover:text-white focus-visible:bg-brand-gradient focus-visible:text-white";
@@ -38,14 +40,14 @@ export default function UserMenu() {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-2 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <Avatar>
-            <AvatarImage src={user?.avatarUrl} alt={user?.name} />
+            <AvatarImage src={user?.avatarUrl} alt={displayName} />
             <AvatarFallback className="bg-brand-gradient text-white">
               {initials || "U"}
             </AvatarFallback>
           </Avatar>
           <span className="hidden text-start lg:block">
             <span className="block text-sm font-medium leading-tight">
-              {user?.name}
+              {displayName}
             </span>
             <span className="block max-w-40 truncate text-xs leading-tight text-muted-foreground">
               {user?.email}
@@ -58,13 +60,13 @@ export default function UserMenu() {
         {/* Profile header — rounded pic with name & email underneath */}
         <DropdownMenuLabel className="flex flex-col items-center gap-2 px-2 py-3 text-center">
           <Avatar className="h-14 w-14">
-            <AvatarImage src={user?.avatarUrl} alt={user?.name} />
+            <AvatarImage src={user?.avatarUrl} alt={displayName} />
             <AvatarFallback className="bg-brand-gradient text-lg text-white">
               {initials || "U"}
             </AvatarFallback>
           </Avatar>
           <span className="block text-sm font-semibold text-foreground">
-            {user?.name}
+            {displayName}
           </span>
           <span className="block max-w-44 truncate text-xs text-muted-foreground">
             {user?.email}

@@ -1,4 +1,5 @@
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { LogIn } from "lucide-react";
@@ -8,18 +9,29 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import BrandLogo from "@/components/common/BrandLogo";
-import { loginSuccess } from "@/store/slices/authSlice";
+import { loginCustomerAsync } from "@/store/slices/authSlice";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const handleSubmit = (e) => {
+  const status = useSelector((state) => state.auth.status);
+  const error = useSelector((state) => state.auth.error);
+  const isLoading = status === "loading";
+
+  const [form, setForm] = useState({ email: "", password: "" });
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: replace with real API call
-    dispatch(loginSuccess({ id: "1", name: "Ali Raza", email: "ali@example.com" }));
-    navigate("/dashboard");
+    const result = await dispatch(loginCustomerAsync(form));
+    if (loginCustomerAsync.fulfilled.match(result)) {
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -35,15 +47,38 @@ export default function LoginPage() {
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div className="space-y-1.5">
             <Label htmlFor="email">{t("auth.email")}</Label>
-            <Input id="email" type="email" placeholder="you@example.com" required />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              value={form.email}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="password">{t("auth.password")}</Label>
-            <Input id="password" type="password" placeholder="••••••••" required />
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              value={form.password}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <Button type="submit" className="w-full">
+
+          {error && (
+            <p className="text-sm text-destructive" role="alert">
+              {error}
+            </p>
+          )}
+
+          <Button type="submit" className="w-full" disabled={isLoading}>
             <LogIn className="h-4 w-4" />
-            {t("auth.signIn")}
+            {isLoading ? t("auth.signingIn") ?? "Signing in…" : t("auth.signIn")}
           </Button>
         </form>
       </CardContent>
