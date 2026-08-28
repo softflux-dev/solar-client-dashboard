@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL =
   import.meta.env.VITE_API_URL ??
-  "https://ryansautoreiniging-d36c1fc7d2c2.herokuapp.com/api/";
+  "https://solar-backend-678v.onrender.com/api/";
 // const BASE_URL =
 //   import.meta.env.VITE_API_URL ??
 //   "https://lj1lt6m5-5000.inc1.devtunnels.ms/api/";
