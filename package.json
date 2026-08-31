@@ -26,10 +26,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@reduxjs/toolkit": "^2.2.7",
-<<<<<<< HEAD
     "axios": "^1.20.0",
-=======
->>>>>>> 97742a257b16cbddc1483e75fe8b1a2ca506ffa1
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "country-flag-icons": "^1.6.20",

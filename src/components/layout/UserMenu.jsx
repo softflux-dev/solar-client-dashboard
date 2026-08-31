@@ -32,10 +32,7 @@ export default function UserMenu() {
     .slice(0, 2)
     .toUpperCase();
 
-  const menuItemClass =
-    "group flex w-full cursor-pointer items-center gap-2.5 rounded-md px-2.5 py-2 text-sm text-muted-foreground outline-none transition-colors hover:bg-brand-gradient hover:text-white focus-visible:bg-brand-gradient focus-visible:text-white";
-
-  const menuItemClass =
+  
     "group flex w-full cursor-pointer items-center gap-2.5 rounded-md px-2.5 py-2 text-sm text-muted-foreground outline-none transition-colors hover:bg-brand-gradient hover:text-white focus-visible:bg-brand-gradient focus-visible:text-white";
 
   return (
