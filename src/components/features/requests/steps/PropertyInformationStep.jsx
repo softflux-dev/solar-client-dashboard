@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateFormData } from "@/store/slices/requestsSlice";
 import FormField from "@/components/common/FormField";
 import StepHeader from "@/components/features/requests/StepHeader";
+import ValidationErrors from "@/components/common/ValidationErrors";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
@@ -84,7 +85,7 @@ function ToggleSwitch({ checked, onChange }) {
   );
 }
 
-export default function PropertyInformationStep() {
+export default function PropertyInformationStep({ errors = {}, onFieldChange }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const property = useSelector((state) => state.requests.formData.property);
@@ -92,6 +93,7 @@ export default function PropertyInformationStep() {
 
   const handleChange = (field, value) => {
     dispatch(updateFormData({ section: "property", data: { [field]: value } }));
+    if (onFieldChange) onFieldChange(field, value);
   };
 
   const discoValues = DISCO_BY_CITY[city] ?? ALL_DISCOS.map((d) => d.value);
@@ -103,6 +105,8 @@ export default function PropertyInformationStep() {
         title={t("requestForm.steps.property")}
         description={t("requestForm.steps.propertyHint")}
       />
+
+      <ValidationErrors errors={errors} className="sm:col-span-2" />
 
       <FormField
         label={t("requestForm.property.propertyType")}

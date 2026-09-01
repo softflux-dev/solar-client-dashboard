@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateFormData } from "@/store/slices/requestsSlice";
 import FormField from "@/components/common/FormField";
 import StepHeader from "@/components/features/requests/StepHeader";
+import ValidationErrors from "@/components/common/ValidationErrors";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -22,13 +23,14 @@ const BUDGET_RANGES = [
   { value: "above_5m", labelKey: "requestForm.additional.budgets.above_5m" },
 ];
 
-export default function AdditionalDetailsStep() {
+export default function AdditionalDetailsStep({ errors = {}, onFieldChange }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const additional = useSelector((state) => state.requests.formData.additional);
 
   const handleChange = (field, value) => {
     dispatch(updateFormData({ section: "additional", data: { [field]: value } }));
+    if (onFieldChange) onFieldChange(field, value);
   };
 
   return (
@@ -37,6 +39,8 @@ export default function AdditionalDetailsStep() {
         title={t("requestForm.steps.additional")}
         description={t("requestForm.steps.additionalHint")}
       />
+
+      <ValidationErrors errors={errors} className="sm:col-span-2" />
       <FormField
         label={t("requestForm.additional.preferredDate")}
         htmlFor="preferredDate"

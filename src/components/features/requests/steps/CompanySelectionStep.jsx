@@ -6,6 +6,7 @@ import { RotateCcw, ChevronLeft, ChevronRight, Search } from "lucide-react";
 import CompanyRow from "@/components/solar/CompanyRow";
 import Spinner from "@/components/common/Spinner";
 import StepHeader from "@/components/features/requests/StepHeader";
+import ValidationErrors from "@/components/common/ValidationErrors";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,7 +34,7 @@ import {
 
 const STEP_PAGE_SIZE = 5;
 
-export default function CompanySelectionStep() {
+export default function CompanySelectionStep({ errors = {} }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -89,6 +90,8 @@ export default function CompanySelectionStep() {
         title={t("requestForm.steps.companies")}
         description={t("requestForm.steps.companiesHint")}
       />
+
+      <ValidationErrors errors={errors} className="mb-4" />
 
       {/* Filters — same as CompanyFilters */}
       <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center">

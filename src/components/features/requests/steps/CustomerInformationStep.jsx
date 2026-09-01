@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateFormData } from "@/store/slices/requestsSlice";
 import FormField from "@/components/common/FormField";
 import StepHeader from "@/components/features/requests/StepHeader";
+import ValidationErrors from "@/components/common/ValidationErrors";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -28,13 +29,14 @@ const OWNERSHIP_STATUSES = [
   { value: "rental", labelKey: "requestForm.customer.ownershipTypes.rental" },
 ];
 
-export default function CustomerInformationStep() {
+export default function CustomerInformationStep({ errors = {}, onFieldChange }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const customer = useSelector((state) => state.requests.formData.customer);
 
   const handleChange = (field, value) => {
     dispatch(updateFormData({ section: "customer", data: { [field]: value } }));
+    if (onFieldChange) onFieldChange(field, value);
   };
 
   return (
@@ -43,6 +45,8 @@ export default function CustomerInformationStep() {
         title={t("requestForm.steps.customer")}
         description={t("requestForm.steps.customerHint")}
       />
+
+      <ValidationErrors errors={errors} className="sm:col-span-2" />
 
       <FormField label={t("requestForm.customer.fullName")} htmlFor="fullName">
         <Input

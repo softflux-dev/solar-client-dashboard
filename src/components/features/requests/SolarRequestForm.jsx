@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -89,6 +89,14 @@ export default function SolarRequestForm() {
 
   const isStepValid = steps[currentStep]?.validate?.(formData) ?? true;
 
+  // Get errors for current step
+  const currentStepErrors = useMemo(() => {
+    if (!stepKey) return {};
+    const getErrors = steps[currentStep]?.getErrors;
+    if (!getErrors) return {};
+    return getErrors(formData);
+  }, [stepKey, currentStep, steps, formData]);
+
   // Check if documents are still uploading
   const uploadsComplete = allUploadsComplete(formData.documents);
 
@@ -100,6 +108,14 @@ export default function SolarRequestForm() {
 
   const [showSuccess, setShowSuccess] = useState(false);
   const [apiResponse, setApiResponse] = useState(null);
+  const [showErrors, setShowErrors] = useState(false);
+
+  // Clear errors when user changes a field
+  const handleFieldChange = useCallback(() => {
+    if (showErrors) {
+      setShowErrors(false);
+    }
+  }, [showErrors]);
 
   const handleSubmit = async () => {
     // Pick the first selected company (or the only one if pre-selected)
@@ -127,6 +143,15 @@ export default function SolarRequestForm() {
     setApiResponse(null);
     dispatch(resetForm());
     navigate("/requests");
+  };
+
+  const handleNext = () => {
+    if (!isStepValid) {
+      setShowErrors(true);
+      return;
+    }
+    setShowErrors(false);
+    dispatch(nextStep());
   };
 
   return (
@@ -165,7 +190,10 @@ export default function SolarRequestForm() {
 
       <Card>
         <CardContent className="p-6">
-          <StepComponent />
+          <StepComponent
+            errors={showErrors ? currentStepErrors : {}}
+            onFieldChange={handleFieldChange}
+          />
         </CardContent>
       </Card>
 
@@ -193,8 +221,8 @@ export default function SolarRequestForm() {
           </Button>
         ) : (
           <Button
-            onClick={() => dispatch(nextStep())}
-            disabled={!isStepValid || isSubmitting}
+            onClick={handleNext}
+            disabled={isSubmitting}
           >
             {t("common.next")}
             <ChevronRight className="h-4 w-4 rtl:rotate-180" />

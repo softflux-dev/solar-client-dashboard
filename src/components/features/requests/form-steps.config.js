@@ -3,6 +3,7 @@ import PropertyInformationStep from "@/components/features/requests/steps/Proper
 import CompanySelectionStep from "@/components/features/requests/steps/CompanySelectionStep";
 import DocumentUploadStep from "@/components/features/requests/steps/DocumentUploadStep";
 import AdditionalDetailsStep from "@/components/features/requests/steps/AdditionalDetailsStep";
+import { validateStep } from "@/components/features/requests/validation";
 
 // Add/remove/reorder steps here only — FormStepper and SolarRequestForm
 // read this array, nothing else needs to change.
@@ -16,16 +17,12 @@ export const FORM_STEPS = [
     labelKey: "requestForm.steps.customer",
     component: CustomerInformationStep,
     validate: (formData) => {
-      const { fullName, email, phone, city, address, ownershipStatus } =
-        formData.customer;
-      return Boolean(
-        fullName.trim() &&
-          email.trim().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) &&
-          phone.trim() &&
-          city.trim() &&
-          address.trim() &&
-          ownershipStatus.trim()
-      );
+      const result = validateStep("customer", formData);
+      return result.success;
+    },
+    getErrors: (formData) => {
+      const result = validateStep("customer", formData);
+      return result.errors;
     },
   },
   {
@@ -33,47 +30,52 @@ export const FORM_STEPS = [
     labelKey: "requestForm.steps.property",
     component: PropertyInformationStep,
     validate: (formData) => {
-      const {
-        propertyType,
-        requiredKva,
-        roofType,
-        roofAreaSqft,
-        disco,
-        siteSurveyRequired,
-      } = formData.property;
-      return Boolean(
-        propertyType.trim() &&
-          requiredKva.trim() &&
-          roofType.trim() &&
-          roofAreaSqft.trim() &&
-          disco.trim() &&
-          siteSurveyRequired !== ""
-      );
+      const result = validateStep("property", formData);
+      return result.success;
+    },
+    getErrors: (formData) => {
+      const result = validateStep("property", formData);
+      return result.errors;
     },
   },
   {
     key: "companies",
     labelKey: "requestForm.steps.companies",
     component: CompanySelectionStep,
-    validate: (formData) => formData.selectedCompanyIds.length > 0,
+    validate: (formData) => {
+      const result = validateStep("companies", formData);
+      return result.success;
+    },
+    getErrors: (formData) => {
+      const result = validateStep("companies", formData);
+      return result.errors;
+    },
   },
   {
     key: "documents",
     labelKey: "requestForm.steps.documents",
     component: DocumentUploadStep,
     validate: (formData) => {
-      const { electricityBill, roofImages, propertyFront } = formData.documents;
-      return (
-        electricityBill.length > 0 &&
-        roofImages.length > 0 &&
-        propertyFront.length > 0
-      );
+      const result = validateStep("documents", formData);
+      return result.success;
+    },
+    getErrors: (formData) => {
+      const result = validateStep("documents", formData);
+      return result.errors;
     },
   },
   {
     key: "additional",
     labelKey: "requestForm.steps.additional",
     component: AdditionalDetailsStep,
+    validate: (formData) => {
+      const result = validateStep("additional", formData);
+      return result.success;
+    },
+    getErrors: (formData) => {
+      const result = validateStep("additional", formData);
+      return result.errors;
+    },
   },
 ];
 

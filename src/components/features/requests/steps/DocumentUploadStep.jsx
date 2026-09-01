@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import FileDropzone from "@/components/common/FileDropzone";
 import StepHeader from "@/components/features/requests/StepHeader";
+import ValidationErrors from "@/components/common/ValidationErrors";
 import { updateFormData } from "@/store/slices/requestsSlice";
 import { uploadToCloudinary } from "@/lib/cloudinaryUpload";
 
@@ -16,7 +17,7 @@ const IMAGE_MAX_MB = 5;
 const BILL_MAX_MB = 5;
 const VIDEO_MAX_MB = 50;
 
-export default function DocumentUploadStep() {
+export default function DocumentUploadStep({ errors = {} }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const documents = useSelector((state) => state.requests.formData.documents);
@@ -31,6 +32,9 @@ export default function DocumentUploadStep() {
         title={t("requestForm.steps.documents")}
         description={t("requestForm.steps.documentsHint")}
       />
+
+      <ValidationErrors errors={errors} className="mb-4" />
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* Electricity Bill — images or PDF, single file */}
         <FileDropzone
