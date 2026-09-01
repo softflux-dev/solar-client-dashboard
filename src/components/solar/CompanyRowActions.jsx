@@ -60,7 +60,7 @@ export default function CompanyRowActions({
         size="icon"
         aria-label={t("solar.favorite")}
         className="text-muted-foreground hover:text-foreground"
-        onClick={() => onToggleFavorite(company.id)}
+        onClick={() => onToggleFavorite?.(company.id)}
       >
         <svg
           viewBox="0 0 24 24"

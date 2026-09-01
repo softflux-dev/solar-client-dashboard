@@ -53,6 +53,8 @@ const DISCO_BY_CITY = {
   peshawar: ["pesco"],
 };
 
+const DESCRIPTION_MAX_WORDS = 100;
+
 const SURVEY_OPTIONS = [
   { value: true, labelKey: "requestForm.property.survey.yes" },
   { value: false, labelKey: "requestForm.property.survey.no" },
@@ -207,9 +209,17 @@ export default function PropertyInformationStep() {
         <Textarea
           id="description"
           value={property.description}
-          onChange={(e) => handleChange("description", e.target.value)}
+          onChange={(e) => {
+            const words = e.target.value.trim().split(/\s+/).filter(Boolean);
+            if (words.length <= DESCRIPTION_MAX_WORDS) {
+              handleChange("description", e.target.value);
+            }
+          }}
           placeholder={t("requestForm.property.descriptionPlaceholder")}
         />
+        <p className="mt-1 text-xs text-muted-foreground">
+          {property.description.trim().split(/\s+/).filter(Boolean).length}/{DESCRIPTION_MAX_WORDS} {t("requestForm.property.wordCount")}
+        </p>
       </FormField>
 
       <FormField

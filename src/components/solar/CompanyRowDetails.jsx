@@ -34,7 +34,7 @@ export default function CompanyRowDetails({
   onGetQuotations,
 }) {
   const { t } = useTranslation();
-
+console.log("Company", company)
   const images = company.images ?? [];
   const visibleImgs = images.slice(0, VISIBLE_IMAGES);
   const extraCount = images.length - VISIBLE_IMAGES;

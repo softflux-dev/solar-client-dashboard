@@ -15,9 +15,11 @@ import { cn } from "@/lib/utils";
 import {
   REGIONS,
   RATING_OPTIONS,
+  PROJECTS_OPTIONS,
   setSearchQuery,
   setRegion,
   setRating,
+  setMinProjects,
   setCompanyFilter,
   clearFilters,
 } from "@/store/slices/solarRequestsSlice";
@@ -33,6 +35,9 @@ export default function CompanyFilters({ className }) {
   const selectedRating = useSelector(
     (state) => state.solarRequests.selectedRating,
   );
+  const selectedMinProjects = useSelector(
+    (state) => state.solarRequests.selectedMinProjects,
+  );
   const companyFilter = useSelector(
     (state) => state.solarRequests.companyFilter,
   );
@@ -41,6 +46,7 @@ export default function CompanyFilters({ className }) {
     searchQuery.trim() !== "" ||
     selectedRegion !== "all" ||
     selectedRating !== "all" ||
+    selectedMinProjects !== "all" ||
     companyFilter !== "all";
 
   return (
@@ -90,6 +96,24 @@ export default function CompanyFilters({ className }) {
             {RATING_OPTIONS.map((rating) => (
               <SelectItem key={rating} value={rating}>
                 {rating}+
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        {/* Completed projects filter */}
+
+        <Select
+          value={selectedMinProjects}
+          onValueChange={(v) => dispatch(setMinProjects(v))}
+        >
+          <SelectTrigger className="rounded-lg bg-white lg:w-40">
+            <SelectValue placeholder={t("solar.allProjects")} />
+          </SelectTrigger>
+          <SelectContent>
+            {PROJECTS_OPTIONS.map((opt) => (
+              <SelectItem key={opt.value} value={opt.value}>
+                {opt.value === "all" ? t("solar.allProjects") : `${opt.label} ${t("solar.projects")}`}
               </SelectItem>
             ))}
           </SelectContent>

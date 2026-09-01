@@ -9,7 +9,8 @@
     "submit": "جمع کروائیں",
     "loading": "لوڈ ہو رہا ہے...",
     "viewAll": "سب دیکھیں",
-    "status": "حیثیت"
+    "status": "حیثیت",
+    "ok": "ٹھیک ہے"
   },
   "topbar": {
     "messages": "پیغامات",
@@ -26,7 +27,11 @@
     "subtitle": "اپنے سولر اکاؤنٹ میں سائن ان کریں",
     "email": "ای میل",
     "password": "پاس ورڈ",
-    "signIn": "سائن ان"
+    "signIn": "سائن ان",
+    "signingIn": "سائن ان ہو رہا ہے…",
+    "logoutConfirm": "کیا آپ واقعی لاگ آؤٹ کرنا چاہتے ہیں؟",
+    "logoutSuccess": "لاگ آؤٹ ہو گیا",
+    "logoutSuccessMessage": "آپ کامیابی سے لاگ آؤٹ ہو گئے ہیں۔"
   },
   "dashboard": {
     "title": "دوبارہ خوش آمدید",
@@ -85,6 +90,8 @@
     "fromCompany": "{{name}} سے کوٹیشن حاصل کی جا رہی ہے",
     "preSelectedNotice": "آپ ان کمپنیوں سے کوٹیشن کی درخواست کر رہے ہیں:",
     "stepOf": "مرحلہ {{current}} از {{total}}",
+    "submitSuccess": "سولر درخواست جمع ہو گئی",
+    "submitSuccessMessage": "آپ کی سولر درخواست کامیابی سے جمع ہو گئی ہے۔",
     "steps": {
       "customer": "گاہک کی معلومات",
       "customerHint": "براہ کرم اپنی رابطہ اور مقام کی تفصیلات فراہم کریں۔",
@@ -158,6 +165,7 @@
       },
       "description": "تفصیل",
       "descriptionPlaceholder": "اپنی جائیداد، توانائی کی ضروریات، یا کسی خاص شرط کے بارے میں بتائیں۔",
+      "wordCount": "الفاظ",
       "survey": {
         "label": "کیا سائٹ سروے درکار ہے؟",
         "yes": "ہاں",
@@ -197,10 +205,15 @@
   },
   "dropzone": {
     "clickOrDrag": "اپ لوڈ کرنے کے لیے کلک کریں یا ڈریگ اینڈ ڈراپ کریں",
-    "maxSize": "زیادہ سے زیادہ فائل کا حجم: {{max}}MB",
+    "maxSize": "زیادہ سے زیادہ {{max}}",
+    "fileCount": "{{current}}/{{max}} فائلیں",
+    "filesUploaded": "{{count}} فائل(یں)",
+    "tooManyFiles": "زیادہ سے زیادہ {{max}} فائلیں اجازت ہے۔",
     "unsupportedFile": "{{name}} فائل کی قسم معاون نہیں ہے۔",
     "tooLarge": "{{name}} {{max}}MB کی حد سے تجاوز کر گئی ہے۔",
-    "remove": "فائل ہٹائیں"
+    "remove": "فائل ہٹائیں",
+    "uploaded": "کامیابی سے اپ لوڈ ہو گیا",
+    "uploadFailed": "اپ لوڈ ناکام۔ براہ کرم دوبارہ کوشش کریں۔"
   },
   "solar": {
     "pageTitle": "سولر ریکوسٹ فارم",
@@ -222,11 +235,15 @@
     "chatSoon": "چیٹ جلد دستیاب ہوگی",
     "allRegions": "تمام علاقے",
     "anyRating": "کوئی بھی ریٹنگ",
+    "allProjects": "تمام منصوبے",
     "allCompanies": "تمام کمپنیاں",
     "favorites": "پسندیدہ",
+    "companiesFound": "کمپنیاں ملیں",
     "resetFilters": "ری سیٹ",
     "noCompanies": "کوئی کمپنی نہیں ملی۔",
-    "noCompaniesHint": "اپنی تلاش یا فلٹرز تبدیل کر کے دیکھیں۔"
+    "noCompaniesHint": "اپنی تلاش یا فلٹرز تبدیل کر کے دیکھیں۔",
+    "fetchError": "کمپنیاں لوڈ کرنے میں ناکامی",
+    "fetchErrorHint": "کمپنیاں حاصل کرتے وقت کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔"
   },
   "notFound": {
     "text": "یہ صفحہ موجود نہیں ہے۔",

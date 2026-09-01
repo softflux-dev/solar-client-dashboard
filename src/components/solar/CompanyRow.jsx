@@ -9,7 +9,6 @@ import CompanyRowDetails from "@/components/solar/CompanyRowDetails";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import {
-  toggleFavorite,
   setExpandedCompany,
   setSelectedCompany,
 } from "@/store/slices/solarRequestsSlice";
@@ -24,12 +23,8 @@ export default function CompanyRow({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const expanded = useSelector(
     (state) => state.solarRequests.expandedCompanyId === company.id,
-  );
-  const isFavorite = useSelector((state) =>
-    state.solarRequests.favoriteCompanyIds.includes(company.id),
   );
 
   const handleExpand = () => {
@@ -37,8 +32,6 @@ export default function CompanyRow({
   };
 
   const handleGetQuotations = () => {
-    // Store the chosen company, then start the quotation flow
-    // skipping the company-selection step.
     dispatch(setSelectedCompany(company.id));
     navigate("/requests/new");
   };
@@ -154,10 +147,9 @@ export default function CompanyRow({
           company={company}
           selectable={selectable}
           selected={selected}
-          isFavorite={isFavorite}
+          isFavorite={company.isFavourite}
           expanded={expanded}
           onToggleSelect={onToggleSelect}
-          onToggleFavorite={(id) => dispatch(toggleFavorite(id))}
           onExpand={handleExpand}
           onGetQuotations={handleGetQuotations}
         />

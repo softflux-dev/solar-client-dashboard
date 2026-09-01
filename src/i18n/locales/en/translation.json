@@ -9,7 +9,8 @@
     "submit": "Submit",
     "loading": "Loading...",
     "viewAll": "View all",
-    "status": "Status"
+    "status": "Status",
+    "ok": "OK"
   },
   "topbar": {
     "messages": "Messages",
@@ -26,7 +27,11 @@
     "subtitle": "Sign in to your Solar account",
     "email": "Email",
     "password": "Password",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "logoutConfirm": "Are you sure you want to log out?",
+    "logoutSuccess": "Logged Out",
+    "logoutSuccessMessage": "You have been logged out successfully."
   },
   "dashboard": {
     "title": "Welcome Back",
@@ -85,6 +90,8 @@
     "fromCompany": "Getting a quotation from {{name}}",
     "preSelectedNotice": "You're requesting a quotation from:",
     "stepOf": "Step {{current}} of {{total}}",
+    "submitSuccess": "Solar Request Submitted",
+    "submitSuccessMessage": "Your solar request has been submitted successfully.",
     "steps": {
       "customer": "Customer Information",
       "customerHint": "Please provide your contact and location details.",
@@ -158,6 +165,7 @@
       },
       "description": "Description",
       "descriptionPlaceholder": "Describe your property, energy needs, or any special requirements.",
+      "wordCount": "words",
       "survey": {
         "label": "Site survey required?",
         "yes": "Yes",
@@ -197,10 +205,15 @@
   },
   "dropzone": {
     "clickOrDrag": "Click to upload or drag & drop",
-    "maxSize": "Maximum file size: {{max}}MB",
+    "maxSize": "Max {{max}}",
+    "fileCount": "{{current}}/{{max}} files",
+    "filesUploaded": "{{count}} file(s)",
+    "tooManyFiles": "Maximum {{max}} files allowed.",
     "unsupportedFile": "{{name}} is not a supported file type.",
     "tooLarge": "{{name}} exceeds the {{max}}MB limit.",
-    "remove": "Remove file"
+    "remove": "Remove file",
+    "uploaded": "Uploaded successfully",
+    "uploadFailed": "Upload failed. Please try again."
   },
   "solar": {
     "pageTitle": "Solar Request Form",
@@ -222,11 +235,15 @@
     "chatSoon": "Chat coming soon",
     "allRegions": "All regions",
     "anyRating": "Any rating",
+    "allProjects": "All Projects",
     "allCompanies": "All Companies",
     "favorites": "Favourites",
+    "companiesFound": "companies found",
     "resetFilters": "Reset",
     "noCompanies": "No companies found.",
-    "noCompaniesHint": "Try changing your search or filters."
+    "noCompaniesHint": "Try changing your search or filters.",
+    "fetchError": "Failed to load companies",
+    "fetchErrorHint": "Something went wrong while fetching companies. Please try again."
   },
   "notFound": {
     "text": "This page doesn't exist.",
