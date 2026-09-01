@@ -2,7 +2,13 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Building2, ChevronLeft, ChevronRight, Loader2, Send } from "lucide-react";
+import {
+  Building2,
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
+  Send,
+} from "lucide-react";
 
 import {
   FORM_STEPS,
@@ -12,7 +18,12 @@ import FormStepper from "@/components/features/requests/FormStepper";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SuccessDialog from "@/components/common/SuccessDialog";
-import { nextStep, prevStep, resetForm, submitLead } from "@/store/slices/requestsSlice";
+import {
+  nextStep,
+  prevStep,
+  resetForm,
+  submitLead,
+} from "@/store/slices/requestsSlice";
 
 /**
  * Extract Cloudinary URLs from a documents section.
@@ -55,7 +66,9 @@ export default function SolarRequestForm() {
 
   const currentStep = useSelector((state) => state.requests.currentStep);
   const formData = useSelector((state) => state.requests.formData);
-  const skipCompanyStep = useSelector((state) => state.requests.skipCompanyStep);
+  const skipCompanyStep = useSelector(
+    (state) => state.requests.skipCompanyStep,
+  );
   const submitStatus = useSelector((state) => state.requests.status);
   const submitError = useSelector((state) => state.requests.error);
   const companies = useSelector((state) => state.solarRequests.companies);
@@ -103,7 +116,7 @@ export default function SolarRequestForm() {
 
     // On success, store the API response and show the success dialog
     if (submitLead.fulfilled.match(result)) {
-      setApiResponse(result.payload);
+      setApiResponse(result.payload?.message || null);
       setShowSuccess(true);
     }
     // On failure, the error is stored in state.requests.error
@@ -133,7 +146,9 @@ export default function SolarRequestForm() {
         <div className="mb-6 flex items-start gap-3 rounded-lg border border-primary/30 bg-accent p-4">
           <Building2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
           <div>
-            <p className="text-sm font-semibold">{t("requestForm.preSelectedNotice")}</p>
+            <p className="text-sm font-semibold">
+              {t("requestForm.preSelectedNotice")}
+            </p>
             <p className="mt-0.5 text-sm text-muted-foreground">
               {selectedCompanies.map((c) => c.name).join(", ")}
             </p>
@@ -165,7 +180,10 @@ export default function SolarRequestForm() {
         </Button>
 
         {isLastStep ? (
-          <Button onClick={handleSubmit} disabled={isSubmitting || !uploadsComplete}>
+          <Button
+            onClick={handleSubmit}
+            disabled={isSubmitting || !uploadsComplete}
+          >
             {isSubmitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : (
@@ -194,14 +212,11 @@ export default function SolarRequestForm() {
       >
         <div className="w-full text-center">
           <p className="mb-3 text-sm text-muted-foreground">
-            {t("requestForm.submitSuccessMessage") ?? "Your solar request has been submitted successfully."}
+            {t("requestForm.submitSuccessMessage") ??
+              "Your solar request has been submitted successfully."}
           </p>
           {apiResponse && (
-            <div className="max-h-60 overflow-auto rounded-lg border border-border bg-muted p-3 text-start">
-              <pre className="whitespace-pre-wrap break-words text-xs text-foreground">
-                {JSON.stringify(apiResponse, null, 2)}
-              </pre>
-            </div>
+            <p className="text-sm text-muted-foreground">{apiResponse}</p>
           )}
         </div>
       </SuccessDialog>
