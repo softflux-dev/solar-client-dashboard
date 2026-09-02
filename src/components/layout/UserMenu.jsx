@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
@@ -13,25 +13,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import SuccessDialog from "@/components/common/SuccessDialog";
-import { logout } from "@/store/slices/authSlice";
+import LogoutDialog from "@/components/common/LogoutDialog";
 
 import settingIcon from "@/assets/icons/setting.svg";
 import logoutIcon from "@/assets/icons/logout.svg";
 
 export default function UserMenu() {
   const user = useSelector((state) => state.auth.user);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -43,19 +31,7 @@ export default function UserMenu() {
     .slice(0, 2)
     .toUpperCase();
 
-  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const [showLogoutSuccess, setShowLogoutSuccess] = useState(false);
-
-  const handleLogoutConfirm = () => {
-    setShowLogoutConfirm(false);
-    dispatch(logout());
-    setShowLogoutSuccess(true);
-  };
-
-  const handleLogoutSuccessClose = () => {
-    setShowLogoutSuccess(false);
-    navigate("/login");
-  };
+  const [showLogout, setShowLogout] = useState(false);
 
   
     const menuItemClass =
@@ -113,7 +89,7 @@ export default function UserMenu() {
         <DropdownMenuItem asChild className={menuItemClass}>
           <button
             type="button"
-            onClick={() => setShowLogoutConfirm(true)}
+            onClick={() => setShowLogout(true)}
           >
             <img
               src={logoutIcon}
@@ -126,38 +102,10 @@ export default function UserMenu() {
       </DropdownMenuContent>
     </DropdownMenu>
 
-    <AlertDialog open={showLogoutConfirm} onOpenChange={setShowLogoutConfirm}>
-      <AlertDialogContent className="gap-6 sm:max-w-md">
-        <AlertDialogHeader className="items-center gap-4 text-center">
-          <img src={logoutIcon} alt="" className="h-14 w-14" />
-          <AlertDialogTitle className="text-xl font-semibold text-foreground">
-            {t("nav.logout")}
-          </AlertDialogTitle>
-          <AlertDialogDescription className="text-sm text-muted-foreground">
-            {t("auth.logoutConfirm") ?? "Are you sure you want to log out?"}
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter className="flex flex-col gap-2 sm:flex-row sm:justify-center">
-          <AlertDialogCancel className="w-full sm:w-32">
-            {t("common.cancel") ?? "Cancel"}
-          </AlertDialogCancel>
-          <AlertDialogAction
-            onClick={handleLogoutConfirm}
-            className="w-full bg-destructive text-destructive-foreground hover:bg-destructive/90 sm:w-32"
-          >
-            {t("nav.logout")}
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-
-    <SuccessDialog
-      open={showLogoutSuccess}
-      onOpenChange={handleLogoutSuccessClose}
-      title={t("auth.logoutSuccess") ?? "Logged Out"}
-      description={t("auth.logoutSuccessMessage") ?? "You have been logged out successfully."}
-      confirmLabel={t("common.ok") ?? "OK"}
-      onConfirm={handleLogoutSuccessClose}
+    <LogoutDialog
+      open={showLogout}
+      onOpenChange={setShowLogout}
+      onSuccess={() => navigate("/login")}
     />
   </>
   );
