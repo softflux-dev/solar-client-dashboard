@@ -23,7 +23,7 @@ export default function UserMenu() {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const displayName = user?.fullName ?? user?.email ?? "User";
+  const displayName = user?.firstName ?? user?.email ?? "User";
   const initials = displayName
     ?.split(" ")
     .map((n) => n[0])
