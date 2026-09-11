@@ -105,7 +105,8 @@
       "additionalHint": "Final details to help us tailor your quotation."
     },
     "customer": {
-      "fullName": "Full name",
+      "firstName": "First name",
+      "lastName": "Last name",
       "email": "Email address",
       "phone": "Phone number",
       "cnic": "CNIC number (optional)",

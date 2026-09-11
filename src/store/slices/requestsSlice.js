@@ -28,7 +28,8 @@ function buildLeadPayload(formData, companyId, docUrls) {
   return {
     companyId,
     customer: {
-      fullName: customer.fullName,
+      firstName: customer.firstName,
+      lastName: customer.lastName,
       phone: customer.phone,
       email: customer.email,
       cnic: customer.cnic,
@@ -75,7 +76,8 @@ export const submitLead = createAsyncThunk(
 const initialFormData = {
   selectedCompanyIds: [], // company ids chosen in the company-selection step
   customer: {
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     cnic: "",

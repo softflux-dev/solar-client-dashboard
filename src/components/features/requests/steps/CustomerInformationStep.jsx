@@ -48,12 +48,21 @@ export default function CustomerInformationStep({ errors = {}, onFieldChange }) 
 
       <ValidationErrors errors={errors} className="sm:col-span-2" />
 
-      <FormField label={t("requestForm.customer.fullName")} htmlFor="fullName">
+      <FormField label={t("requestForm.customer.firstName")} htmlFor="firstName">
         <Input
-          id="fullName"
-          value={customer.fullName}
-          onChange={(e) => handleChange("fullName", e.target.value)}
-          placeholder="Ahmed Khan"
+          id="firstName"
+          value={customer.firstName}
+          onChange={(e) => handleChange("firstName", e.target.value)}
+          placeholder="Ahmed"
+        />
+      </FormField>
+
+      <FormField label={t("requestForm.customer.lastName")} htmlFor="lastName">
+        <Input
+          id="lastName"
+          value={customer.lastName}
+          onChange={(e) => handleChange("lastName", e.target.value)}
+          placeholder="Khan"
         />
       </FormField>
 
