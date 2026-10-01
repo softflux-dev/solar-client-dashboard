@@ -92,7 +92,7 @@ export default function CompanyRowActions({
 
       {/* Primary actions — hidden when expanded (they live in the expanded panel) */}
       {!expanded && (
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <Button variant="outline" size="sm" onClick={onExpand}>
             {t("solar.viewDetail")}
           </Button>
@@ -104,7 +104,7 @@ export default function CompanyRowActions({
             size="icon"
             title={t("solar.chatSoon")}
             aria-label={t("solar.chat")}
-            className="bg-muted text-muted-foreground hover:bg-brand-gradient hover:text-white"
+            className="bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
           >
             <ChatIcon className="h-4 w-4" />
           </Button>

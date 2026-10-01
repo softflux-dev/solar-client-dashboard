@@ -1,3 +1,4 @@
+import RegionFilter from "@/components/solar/RegionFilter";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RotateCcw, Search } from "lucide-react";
@@ -13,11 +14,9 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import {
-  REGIONS,
   RATING_OPTIONS,
   PROJECTS_OPTIONS,
   setSearchQuery,
-  setRegion,
   setRating,
   setMinProjects,
   setCompanyFilter,
@@ -50,37 +49,21 @@ export default function CompanyFilters({ className }) {
     companyFilter !== "all";
 
   return (
-    <div className={cn("space-y-3 ", className)}>
-      <div className="flex flex-col gap-3 lg:flex-row  lg:items-center w-full">
+    <div className={cn("rounded-lg border border-border bg-card p-4", className)}>
+      <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {/* Search */}
-        <div className="relative flex-1">
+        <div className="relative min-w-0 sm:col-span-2 xl:col-span-4">
           <Search className="absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={searchQuery}
             onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+            aria-label={t("common.search")}
             placeholder={t("common.search")}
-            className="rounded-lg bg-white ps-9"
+            className="ps-9"
           />
         </div>
 
-        {/* Region filter */}
-
-        <Select
-          value={selectedRegion}
-          onValueChange={(v) => dispatch(setRegion(v))}
-        >
-          <SelectTrigger className="rounded-lg bg-white lg:w-40">
-            <SelectValue placeholder={t("solar.allRegions")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("solar.allRegions")}</SelectItem>
-            {REGIONS.map((region) => (
-              <SelectItem key={region} value={region}>
-                {region}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <RegionFilter />
 
         {/* Rating filter */}
 
@@ -88,8 +71,7 @@ export default function CompanyFilters({ className }) {
           value={selectedRating}
           onValueChange={(v) => dispatch(setRating(v))}
         >
-          <SelectTrigger className="rounded-lg bg-white lg:w-40">
-            <SelectValue placeholder={t("solar.anyRating")} />
+          <SelectTrigger aria-label={t("solar.anyRating")}><SelectValue placeholder={t("solar.anyRating")} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">{t("solar.anyRating")}</SelectItem>
@@ -107,8 +89,7 @@ export default function CompanyFilters({ className }) {
           value={selectedMinProjects}
           onValueChange={(v) => dispatch(setMinProjects(v))}
         >
-          <SelectTrigger className="rounded-lg bg-white lg:w-40">
-            <SelectValue placeholder={t("solar.allProjects")} />
+          <SelectTrigger aria-label={t("solar.allProjects")}><SelectValue placeholder={t("solar.allProjects")} />
           </SelectTrigger>
           <SelectContent>
             {PROJECTS_OPTIONS.map((opt) => (
@@ -125,8 +106,7 @@ export default function CompanyFilters({ className }) {
           value={companyFilter}
           onValueChange={(v) => dispatch(setCompanyFilter(v))}
         >
-          <SelectTrigger className="rounded-lg bg-white lg:w-40">
-            <SelectValue placeholder={t("solar.allCompanies")} />
+          <SelectTrigger aria-label={t("solar.allCompanies")}><SelectValue placeholder={t("solar.allCompanies")} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">{t("solar.allCompanies")}</SelectItem>
@@ -140,7 +120,7 @@ export default function CompanyFilters({ className }) {
           size="sm"
           className={cn(
             "text-muted-foreground",
-            !hasActiveFilters && "pointer-events-none opacity-0",
+            !hasActiveFilters && "hidden",
           )}
           onClick={() => dispatch(clearFilters())}
         >

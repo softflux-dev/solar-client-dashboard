@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils";
 export default function CompanyLogo({ company, className }) {
   const [error, setError] = useState(false);
 
-  if (error) {
+  if (error || !company.logo) {
     return (
       <div
         className={cn(
-          "bg-brand-gradient-soft flex items-center justify-center rounded-xl font-bold text-primary",
+          "bg-muted flex items-center justify-center rounded-md font-semibold text-muted-foreground",
           className
         )}
       >

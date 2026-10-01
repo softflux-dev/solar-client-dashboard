@@ -40,10 +40,8 @@ export default function CompanyRow({
     <Card
       className={cn(
         "transition-shadow hover:shadow-md",
-        selectable && "cursor-pointer",
         selectable && selected && "border-primary ring-2 ring-primary/30",
       )}
-      onClick={selectable ? () => onToggleSelect?.(company.id) : undefined}
     >
       <div
         className={cn(
@@ -62,13 +60,13 @@ export default function CompanyRow({
             company={company}
             className={cn(
               "shrink-0 transition-all duration-300",
-              expanded ? "h-44 w-44" : "h-32 w-32 lg:h-36 lg:w-36",
+              expanded ? "h-16 w-16 sm:h-28 sm:w-28" : "h-16 w-16 sm:h-24 sm:w-24",
             )}
           />
           <div className="min-w-0 flex-1">
             <h3
               className={cn(
-                "truncate font-bold leading-tight",
+                "break-words font-semibold leading-snug",
                 expanded ? "text-2xl" : "text-xl",
               )}
             >
@@ -105,7 +103,7 @@ export default function CompanyRow({
                 <Mail className="h-3.5 w-3.5 shrink-0" />
                 <a
                   href={`mailto:${company.email}`}
-                  className="hover:text-primary hover:underline"
+                  className="min-w-0 break-all hover:text-primary hover:underline"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {company.email}

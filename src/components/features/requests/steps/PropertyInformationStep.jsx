@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { EMPTY_LOOKUP, fetchProviders } from "@/store/slices/electricitySlice";
+import LookupStatus from "@/components/common/LookupStatus";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateFormData } from "@/store/slices/requestsSlice";
@@ -35,25 +38,6 @@ const ROOF_TYPES = [
   { value: "ground", labelKey: "requestForm.property.roofTypes.ground" },
 ];
 
-const ALL_DISCOS = [
-  { value: "kelectric", labelKey: "requestForm.property.discos.kelectric" },
-  { value: "lesco", labelKey: "requestForm.property.discos.lesco" },
-  { value: "iesco", labelKey: "requestForm.property.discos.iesco" },
-  { value: "fesco", labelKey: "requestForm.property.discos.fesco" },
-  { value: "mepco", labelKey: "requestForm.property.discos.mepco" },
-  { value: "pesco", labelKey: "requestForm.property.discos.pesco" },
-];
-
-const DISCO_BY_CITY = {
-  karachi: ["kelectric"],
-  lahore: ["lesco"],
-  islamabad: ["iesco"],
-  rawalpindi: ["iesco"],
-  faisalabad: ["fesco"],
-  multan: ["mepco"],
-  peshawar: ["pesco"],
-};
-
 const DESCRIPTION_MAX_WORDS = 100;
 
 const SURVEY_OPTIONS = [
@@ -61,11 +45,12 @@ const SURVEY_OPTIONS = [
   { value: false, labelKey: "requestForm.property.survey.no" },
 ];
 
-function ToggleSwitch({ checked, onChange }) {
+function ToggleSwitch({ checked, onChange, label }) {
   return (
     <button
       type="button"
       role="switch"
+      aria-label={label}
       aria-checked={checked}
       onClick={() => onChange(!checked)}
       className={cn(
@@ -90,14 +75,13 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
   const dispatch = useDispatch();
   const property = useSelector((state) => state.requests.formData.property);
   const city = useSelector((state) => state.requests.formData.customer.city);
+  const providers = useSelector((state) => state.electricity.providersByCity[city] ?? EMPTY_LOOKUP);
+  useEffect(() => { if (city) dispatch(fetchProviders(city)); }, [dispatch, city]);
 
   const handleChange = (field, value) => {
     dispatch(updateFormData({ section: "property", data: { [field]: value } }));
     if (onFieldChange) onFieldChange(field, value);
   };
-
-  const discoValues = DISCO_BY_CITY[city] ?? ALL_DISCOS.map((d) => d.value);
-  const discos = ALL_DISCOS.filter((d) => discoValues.includes(d.value));
 
   return (
     <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -110,13 +94,13 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
 
       <FormField
         label={t("requestForm.property.propertyType")}
-        htmlFor="propertyType"
+        htmlFor="propertyType" error={errors.propertyType}
       >
         <Select
           value={property.propertyType}
           onValueChange={(v) => handleChange("propertyType", v)}
         >
-          <SelectTrigger id="propertyType">
+          <SelectTrigger id="propertyType" aria-invalid={!!errors.propertyType} aria-describedby={errors.propertyType ? "propertyType-error" : undefined}>
             <SelectValue
               placeholder={t("requestForm.property.typesPlaceholder")}
             />
@@ -131,12 +115,12 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
         </Select>
       </FormField>
 
-      <FormField label={t("requestForm.property.requiredKva")} htmlFor="requiredKva">
+      <FormField label={t("requestForm.property.requiredKva")} htmlFor="requiredKva" error={errors.requiredKva}>
         <Select
           value={property.requiredKva}
           onValueChange={(v) => handleChange("requiredKva", v)}
         >
-          <SelectTrigger id="requiredKva">
+          <SelectTrigger id="requiredKva" aria-invalid={!!errors.requiredKva} aria-describedby={errors.requiredKva ? "requiredKva-error" : undefined}>
             <SelectValue placeholder={t("requestForm.property.kvaPlaceholder")} />
           </SelectTrigger>
           <SelectContent>
@@ -149,12 +133,12 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
         </Select>
       </FormField>
 
-      <FormField label={t("requestForm.property.roofType")} htmlFor="roofType">
+      <FormField label={t("requestForm.property.roofType")} htmlFor="roofType" error={errors.roofType}>
         <Select
           value={property.roofType}
           onValueChange={(v) => handleChange("roofType", v)}
         >
-          <SelectTrigger id="roofType">
+          <SelectTrigger id="roofType" aria-invalid={!!errors.roofType} aria-describedby={errors.roofType ? "roofType-error" : undefined}>
             <SelectValue
               placeholder={t("requestForm.property.roofTypePlaceholder")}
             />
@@ -171,10 +155,10 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
 
       <FormField
         label={t("requestForm.property.roofArea")}
-        htmlFor="roofAreaSqft"
+        htmlFor="roofAreaSqft" error={errors.roofAreaSqft}
       >
         <Input
-          id="roofAreaSqft"
+          id="roofAreaSqft" aria-invalid={!!errors.roofAreaSqft} aria-describedby={errors.roofAreaSqft ? "roofAreaSqft-error" : undefined}
           type="number"
           min="0"
           value={property.roofAreaSqft}
@@ -185,33 +169,35 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
 
       <FormField
         label={t("requestForm.property.disco")}
-        htmlFor="disco"
+        htmlFor="disco" error={errors.disco}
         className="sm:col-span-2"
       >
         <Select
           value={property.disco}
+          disabled={!city || providers.status !== "succeeded" || !providers.items.length}
           onValueChange={(v) => handleChange("disco", v)}
         >
-          <SelectTrigger id="disco">
+          <SelectTrigger id="disco" aria-invalid={!!errors.disco} aria-describedby={errors.disco ? "disco-error" : undefined} loading={!!city && (providers.status === "idle" || providers.status === "loading")}>
             <SelectValue placeholder={t("requestForm.property.discoPlaceholder")} />
           </SelectTrigger>
           <SelectContent>
-            {discos.map(({ value, labelKey }) => (
+            {providers.items.map((value) => (
               <SelectItem key={value} value={value}>
-                {t(labelKey)}
+                {value}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
+        <LookupStatus lookup={providers} onRetry={() => dispatch(fetchProviders(city))} />
       </FormField>
 
       <FormField
         label={t("requestForm.property.description")}
-        htmlFor="description"
+        htmlFor="description" error={errors.description}
         className="sm:col-span-2"
       >
         <Textarea
-          id="description"
+          id="description" aria-invalid={!!errors.description} aria-describedby={errors.description ? "description-error" : undefined}
           value={property.description}
           onChange={(e) => {
             const words = e.target.value.trim().split(/\s+/).filter(Boolean);
@@ -228,7 +214,7 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
 
       <FormField
         label={t("requestForm.property.survey.label")}
-        htmlFor="siteSurveyRequired"
+        htmlFor="siteSurveyRequired" error={errors.siteSurveyRequired}
         className="sm:col-span-2"
       >
         <div className="flex flex-wrap gap-3">
@@ -273,6 +259,7 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
             </p>
           </div>
           <ToggleSwitch
+            label={t("requestForm.property.backupBattery.title")}
             checked={property.backupBattery}
             onChange={(v) => handleChange("backupBattery", v)}
           />
@@ -282,10 +269,10 @@ export default function PropertyInformationStep({ errors = {}, onFieldChange }) 
           <div className="mt-4 border-t border-border pt-4">
             <FormField
               label={t("requestForm.property.backupBattery.hours")}
-              htmlFor="backupHours"
+              htmlFor="backupHours" error={errors.backupHours}
             >
               <Input
-                id="backupHours"
+                id="backupHours" aria-invalid={!!errors.backupHours} aria-describedby={errors.backupHours ? "backupHours-error" : undefined}
                 type="number"
                 min="1"
                 value={property.backupHours}

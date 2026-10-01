@@ -16,7 +16,7 @@ export default function DashboardLayout() {
 
       <div
         className={cn(
-          "flex flex-1 flex-col transition-all duration-200",
+          "flex min-w-0 flex-1 flex-col transition-[padding] duration-150 motion-reduce:transition-none",
           sidebarOpen ? "md:ps-72" : "md:ps-[4.5rem]"
         )}
       >

@@ -18,7 +18,7 @@ export default function FormStepper({ steps, currentStep }) {
   return (
     <div className="mb-8">
       {/* Mobile: compact progress bar + label */}
-      <div className="mb-4 rounded-md bg-white p-4 sm:hidden">
+      <div className="mb-4 rounded-md bg-card p-4 lg:hidden">
         <p className="mb-2 text-sm text-muted-foreground">
           {t("requestForm.stepOf", {
             current: currentStep + 1,
@@ -32,7 +32,7 @@ export default function FormStepper({ steps, currentStep }) {
       </div>
 
 {/* Desktop: full step list */}
-      <ol className="hidden rounded-md bg-white p-4 sm:flex">
+      <ol className="hidden rounded-md bg-card p-4 lg:flex">
         {steps.map((step, index) => {
           const isComplete = index < currentStep;
           const isCurrent = index === currentStep;
@@ -51,7 +51,7 @@ export default function FormStepper({ steps, currentStep }) {
                     index === 0
                       ? "bg-transparent"
                       : index - 1 < currentStep
-                        ? "bg-brand-gradient"
+                        ? "bg-primary"
                         : "bg-border",
                   )}
                 />
@@ -60,7 +60,7 @@ export default function FormStepper({ steps, currentStep }) {
                   className={cn(
                     "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-xs font-medium transition-colors",
                     isComplete &&
-                      "border-transparent bg-brand-gradient text-white",
+                      "border-transparent bg-primary text-primary-foreground",
                     isCurrent && "border-primary text-primary",
                     !isComplete &&
                       !isCurrent &&
@@ -75,16 +75,16 @@ export default function FormStepper({ steps, currentStep }) {
                     isLast
                       ? "bg-transparent"
                       : isComplete
-                        ? "bg-brand-gradient"
+                        ? "bg-primary"
                         : "bg-border",
                   )}
                 />
               </div>
               <span
                 className={cn(
-                  "mt-1.5 whitespace-nowrap text-xs font-medium",
+                  "mt-2 px-2 text-center text-xs font-medium leading-relaxed",
                   isCurrent || isComplete
-                    ? "text-primary"
+                    ? "text-foreground"
                     : "text-muted-foreground",
                 )}
               >

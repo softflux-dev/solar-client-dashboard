@@ -13,12 +13,13 @@ export default function ValidationErrors({ errors, className }) {
 
   return (
     <div
+      role="alert"
       className={cn(
         "rounded-md border border-destructive/50 bg-destructive/10 p-3",
         className,
       )}
     >
-      <ul className="list-disc space-y-1 pl-4 text-sm text-destructive">
+      <ul className="list-disc space-y-1 ps-4 text-sm text-destructive">
         {errorMessages.map((error, index) => (
           <li key={index}>{error}</li>
         ))}

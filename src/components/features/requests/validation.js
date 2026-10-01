@@ -17,8 +17,9 @@ export const customerSchema = z.object({
   phone: z
     .string()
     .min(1, "Phone number is required")
-    .regex(/^[\d\s\-\+\(\)]+$/, "Invalid phone number format"),
-  cnic: z.string().optional(),
+    .regex(/^\+?[\d ()-]+$/, "Invalid phone number format")
+    .refine((value) => value.replace(/\D/g, "").length >= 10 && value.replace(/\D/g, "").length <= 15, "Phone number must contain 10 to 15 digits"),
+  cnic: z.string().regex(/^(?:\d{13}|\d{5}-\d{7}-\d)?$/, "CNIC must contain 13 digits (12345-1234567-1)").optional(),
   city: z.string().min(1, "City is required"),
   address: z
     .string()

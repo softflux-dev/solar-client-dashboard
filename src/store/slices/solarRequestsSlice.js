@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk, createSelector } from "@reduxjs/toolkit"
 
 import { getCompanies } from "@/api/services/solarRequestService";
 
-const REGIONS = ["Punjab", "Sindh", "KPK", "Balochistan", "Islamabad"];
 const RATING_OPTIONS = ["9", "8", "7"];
 const PROJECTS_OPTIONS = [
   { label: "Any", value: "all" },
@@ -219,5 +218,5 @@ export const buildFilterParams = createSelector(
   },
 );
 
-export { REGIONS, RATING_OPTIONS, PROJECTS_OPTIONS };
+export { RATING_OPTIONS, PROJECTS_OPTIONS };
 export default solarRequestsSlice.reducer;

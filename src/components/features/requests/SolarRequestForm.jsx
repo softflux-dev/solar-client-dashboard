@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -109,6 +109,9 @@ export default function SolarRequestForm() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [apiResponse, setApiResponse] = useState(null);
   const [showErrors, setShowErrors] = useState(false);
+  useEffect(() => {
+    if (showErrors) document.querySelector('[aria-invalid="true"]')?.focus();
+  }, [showErrors]);
 
   // Clear errors when user changes a field
   const handleFieldChange = useCallback(() => {
@@ -189,7 +192,7 @@ export default function SolarRequestForm() {
       )}
 
       <Card>
-        <CardContent className="p-6">
+        <CardContent className="p-4 sm:p-6">
           <StepComponent
             errors={showErrors ? currentStepErrors : {}}
             onFieldChange={handleFieldChange}

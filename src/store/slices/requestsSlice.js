@@ -126,6 +126,9 @@ const requestsSlice = createSlice({
     updateFormData(state, action) {
       // action.payload: { section: "customer", data: {...} }
       const { section, data } = action.payload;
+      if (section === "customer" && data.city !== undefined && data.city !== state.formData.customer.city) {
+        state.formData.property.disco = "";
+      }
       state.formData[section] = { ...state.formData[section], ...data };
     },
     toggleSelectedCompany(state, action) {

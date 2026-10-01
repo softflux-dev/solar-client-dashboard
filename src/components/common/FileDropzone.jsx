@@ -169,11 +169,15 @@ export default function FileDropzone({
 
       <div
         role="button"
+        aria-label={`${label}: ${t("dropzone.clickOrDrag")}`}
+        aria-disabled={hasUploading}
         tabIndex={0}
         onClick={() => !hasUploading && inputRef.current?.click()}
         onKeyDown={(e) => {
-          if ((e.key === "Enter" || e.key === " ") && !hasUploading)
+          if ((e.key === "Enter" || e.key === " ") && !hasUploading) {
+            e.preventDefault();
             inputRef.current?.click();
+          }
         }}
         onDragOver={(e) => {
           e.preventDefault();
@@ -245,7 +249,7 @@ export default function FileDropzone({
                 </span>
               )}
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium">{file.name}</p>
+                <p className="break-all text-sm font-medium">{file.name}</p>
                 <p className="text-xs text-muted-foreground">
                   {formatBytes(file.size)}
                 </p>
@@ -255,7 +259,7 @@ export default function FileDropzone({
                   </p>
                 )}
                 {file.uploadedData && !file.uploading && (
-                  <p className="mt-0.5 text-xs text-green-600">
+                  <p className="mt-0.5 text-xs text-foreground">
                     {t("dropzone.uploaded")}
                   </p>
                 )}

@@ -25,7 +25,6 @@ function ChatIcon({ className }) {
   );
 }
 
-const VISIBLE_IMAGES = 4;
 
 export default function CompanyRowDetails({
   company,
@@ -34,10 +33,8 @@ export default function CompanyRowDetails({
   onGetQuotations,
 }) {
   const { t } = useTranslation();
-console.log("Company", company)
   const images = company.images ?? [];
-  const visibleImgs = images.slice(0, VISIBLE_IMAGES);
-  const extraCount = images.length - VISIBLE_IMAGES;
+  const visibleImgs = images;
 
   return (
     <div className="crd-panel">
@@ -56,22 +53,7 @@ console.log("Company", company)
             </div>
           ))}
 
-          {/* "View More.." tile — shown when there are images beyond VISIBLE_IMAGES */}
-          {extraCount > 0 && (
-            <div className="crd-img-wrapper crd-viewmore-tile">
-              <img
-                src={images[VISIBLE_IMAGES]}
-                alt={t("solar.viewMoreImages")}
-                loading="lazy"
-                className="crd-img"
-              />
-              <div className="crd-viewmore-overlay">
-                <span className="crd-viewmore-text">
-                  {t("solar.viewMore")}..
-                </span>
-              </div>
-            </div>
-          )}
+
         </div>
       </div>
 
@@ -86,7 +68,7 @@ console.log("Company", company)
           >
             {t("solar.viewDetail")}
           </Button>
-          <Button size="sm" className="crd-btn-primary" onClick={onGetQuotations}>
+          <Button size="sm" onClick={onGetQuotations}>
             {t("solar.getQuotations")}
           </Button>
           <Button

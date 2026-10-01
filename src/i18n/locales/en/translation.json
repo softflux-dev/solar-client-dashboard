@@ -10,7 +10,9 @@
     "loading": "Loading...",
     "viewAll": "View all",
     "status": "Status",
-    "ok": "OK"
+    "ok": "OK",
+    "retry": "Try again",
+    "noOptions": "No options available."
   },
   "topbar": {
     "messages": "Messages",

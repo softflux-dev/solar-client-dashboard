@@ -21,24 +21,24 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 24 85% 48%;
+    --primary: 24 85% 36%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 222 47% 11%;
 
     --muted: 0 0% 96%;
-    --muted-foreground: 220 9% 46%;
+    --muted-foreground: 220 9% 40%;
 
     --accent: 24 95% 96%;
-    --accent-foreground: 24 85% 42%;
+    --accent-foreground: 24 85% 36%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 42%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 91%;
     --input: 0 0% 91%;
-    --ring: 24 85% 48%;
+    --ring: 24 85% 36%;
 
     /* Sidebar: white surface so the navy brand mark stays crisp */
     --sidebar-background: 0 0% 100%;
@@ -70,8 +70,8 @@
     --popover: 222 47% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 24 85% 52%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 24 85% 62%;
+    --primary-foreground: 222 47% 11%;
 
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
@@ -82,12 +82,12 @@
     --accent: 24 40% 22%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 80% 72%;
+    --destructive-foreground: 222 47% 11%;
 
     --border: 217 33% 17%;
     --input: 217 33% 17%;
-    --ring: 24 85% 52%;
+    --ring: 24 85% 62%;
 
     --sidebar-background: 222 47% 8%;
     --sidebar-foreground: 210 40% 96%;
@@ -103,6 +103,11 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
   }
 
   /* Urdu locale: swap font + rely on [dir="rtl"] set on <html> by i18n */
@@ -133,6 +138,19 @@
     white-space: normal;
     overflow: visible;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :focus-visible { outline: 2px solid Highlight !important; }
 }
 
 /* Logical properties throughout the app (ps-/pe-/ms-/me-/text-start etc.)
@@ -322,7 +340,7 @@
 
   /* Action buttons row */
   .crd-actions {
-    @apply flex items-center gap-2;
+    @apply flex flex-wrap items-center gap-2;
   }
 
   /* "View Detail" outline button */
